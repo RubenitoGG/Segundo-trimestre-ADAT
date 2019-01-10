@@ -71,6 +71,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DAL\BibliotecaContext.cs" />
+    <Compile Include="DAL\GenericRepository.cs" />
+    <Compile Include="DAL\LibrosRepositorio.cs" />
+    <Compile Include="DAL\PrestamoRepositorio.cs" />
+    <Compile Include="DAL\SociosRepository.cs" />
+    <Compile Include="DAL\UnitOfWork.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -121,6 +126,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="imagenes\Search.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

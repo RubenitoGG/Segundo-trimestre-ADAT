@@ -7,6 +7,44 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Content="ISBN" HorizontalAlignment="Left" Margin="27,102,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="txt_isbn" HorizontalAlignment="Left" Height="26" Margin="104,102,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="195"/>
+        <Label  Content="Titulo" HorizontalAlignment="Left" Margin="27,142,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="txt_titulo" HorizontalAlignment="Left" Height="26" Margin="104,142,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="195"/>
+        <Label Content="Editorial" HorizontalAlignment="Left" Margin="27,179,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="txt_editorial" HorizontalAlignment="Left" Height="26" Margin="104,179,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="195"/>
+        <Label Content="Descripcion" HorizontalAlignment="Left" Margin="27,217,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="txt_descripcion" HorizontalAlignment="Left" Height="121" Margin="104,217,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="268"/>
+        <Button Name="btn_registrar" Content="Registrar" HorizontalAlignment="Left" Margin="105,357,0,0" VerticalAlignment="Top" Width="58" Click="Btn_registrar_Click"/>
+        <Button Name="btn_modificar" Content="Modificar" HorizontalAlignment="Left" Margin="170,357,0,0" VerticalAlignment="Top" Width="56"/>
+        <Button Name="btn_eliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="233,357,0,0" VerticalAlignment="Top" Width="62"/>
+        <Label Content="Ejemplares" HorizontalAlignment="Left" Margin="387,54,0,0" VerticalAlignment="Top"/>
+        <DataGrid x:Name="dgEjemplares"  AutoGenerateColumns="false" HorizontalAlignment="Left" Height="201" Margin="394,85,0,0" VerticalAlignment="Top" Width="355" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Codigo Libro" Binding="{Binding Path=codigo}"/>
+                <DataGridTextColumn Header="Num Ejemplar" Binding="{Binding Path=numeroEjemp}"/>
+                <DataGridTextColumn Header="Fecha publicacion" Binding="{Binding Path=fechaPublicacion}"/>
+                <DataGridTextColumn Header="Estado" Binding="{Binding Path=estado}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Fecha de Publicacion:" HorizontalAlignment="Left" Margin="407,329,0,0" VerticalAlignment="Top"/>
+        <DatePicker Name="dp_FechaPublicacion" HorizontalAlignment="Left" Margin="540,329,0,0" VerticalAlignment="Top" Height="26"/>
+        <Button Name="btn_GuardarEjemplar" Content="Guardar Ejemplar" HorizontalAlignment="Left" Margin="580,387,0,0" VerticalAlignment="Top" Width="105" Click="Btn_GuardarEjemplar_Click"/>
+        <Label Content="Numero de ejemplar:" HorizontalAlignment="Left" Margin="407,355,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="txt_numEjemplar" HorizontalAlignment="Left" Height="20" Margin="540,361,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="145"/>
+        <Button Name="btn_buscarLibro"  HorizontalAlignment="Left" Margin="388,27,0,0" VerticalAlignment="Top" Width="37" Height="22">
+            <Image x:Name="ImageBuscar" Source="/imagenes/Search.png"/>
+        </Button>
+        <ComboBox x:Name="cbCampos" HorizontalAlignment="Left" Margin="21,27,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tbBusqueda" HorizontalAlignment="Left" Height="22" Margin="147,27,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="225"/>
+        <Label x:Name="label" Content="Buscar Por:" HorizontalAlignment="Left" Height="27" Margin="21,0,0,0" VerticalAlignment="Top" Width="126"/>
+        <Button x:Name="btNuevo" Content="Nuevo" HorizontalAlignment="Left" Height="20" Margin="38,357,0,0" VerticalAlignment="Top" Width="57"/>
+        <Label Content="Codigo" HorizontalAlignment="Left" Margin="27,64,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_codigo" HorizontalAlignment="Left" Height="26" Margin="104,64,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="195"/>
+        <Label Content="Codigo:" HorizontalAlignment="Left" Margin="461,303,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txt_codigo_buscar" HorizontalAlignment="Left" Height="20" Margin="540,303,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="145"/>
     </Grid>
 </Window>
