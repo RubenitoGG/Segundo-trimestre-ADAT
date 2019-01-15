@@ -28,24 +28,29 @@ namespace WpfBiblioteca
         public MainWindow()
         {
             InitializeComponent();
+            GridLibro.DataContext = l;
             dgEjemplares.ItemsSource = l.Ejemplares.ToList();
         }
 
         private void Btn_registrar_Click(object sender, RoutedEventArgs e)
         {
-            l = new Libro
-            {
-                Isbn = txt_isbn.Text,
-                Titulo = txt_titulo.Text,
-                Editorial = txt_editorial.Text,
-                Descripcion = txt_descripcion.Text
-            };
+            // NO SE HACE PORQUE TIENE UN BINDING:
+            //l = new Libro
+            //{
+            //    Isbn = txt_isbn.Text,
+            //    Titulo = txt_titulo.Text,
+            //    Editorial = txt_editorial.Text,
+            //    Descripcion = txt_descripcion.Text
+            //};
 
             uow.LibrosRepositorio.Añadir(l);
         }
 
         private void Btn_GuardarEjemplar_Click(object sender, RoutedEventArgs e)
         {
+            dgEjemplares.ItemsSource = "";
+            l = uow.LibrosRepositorio.Get(libro => libro.Isbn.Equals(txt_isbn.Text)).FirstOrDefault();
+
             Ejemplar ejem = new Ejemplar
             {
                 LibroId = l.LibroId,
@@ -55,7 +60,16 @@ namespace WpfBiblioteca
             };
 
             l.Ejemplares.Add(ejem);
-            uow.LibrosRepositorio.Update(l);
+
+            if(uow.LibrosRepositorio.Get(libro => libro.Isbn.Equals(txt_isbn.Text)).FirstOrDefault() != null)
+                uow.LibrosRepositorio.Update(l);
+            dgEjemplares.ItemsSource = l.Ejemplares;
+        }
+
+        private void BtNuevo_Click(object sender, RoutedEventArgs e)
+        {
+            l = new Libro();
+            GridLibro.DataContext = l;
         }
     }
 }
