@@ -19,8 +19,8 @@
         <Label Content="Descripcion" HorizontalAlignment="Left" Margin="27,205,0,0" VerticalAlignment="Top"/>
         <TextBox Name="txt_descripcion" HorizontalAlignment="Left" Height="121" Margin="104,205,0,0" TextWrapping="Wrap" Text="{Binding Path=Descripcion, Mode=TwoWay}" VerticalAlignment="Top" Width="268"/>
         <Button Name="btn_registrar" Content="Registrar" HorizontalAlignment="Left" Margin="105,353,0,0" VerticalAlignment="Top" Width="58" Click="Btn_registrar_Click"/>
-        <Button Name="btn_modificar" Content="Modificar" HorizontalAlignment="Left" Margin="170,353,0,0" VerticalAlignment="Top" Width="56"/>
-        <Button Name="btn_eliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="233,353,0,0" VerticalAlignment="Top" Width="62"/>
+        <Button Name="btn_modificar" Content="Modificar" HorizontalAlignment="Left" Margin="170,353,0,0" VerticalAlignment="Top" Width="56" Click="Btn_modificar_Click"/>
+        <Button Name="btn_eliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="233,353,0,0" VerticalAlignment="Top" Width="62" Click="Btn_eliminar_Click"/>
         <Label Content="Ejemplares" HorizontalAlignment="Left" Margin="387,54,0,0" VerticalAlignment="Top"/>
         <DataGrid x:Name="dgEjemplares"  AutoGenerateColumns="false" HorizontalAlignment="Left" Height="201" Margin="394,85,0,0" VerticalAlignment="Top" Width="355" IsReadOnly="True">
             <DataGrid.Columns>
@@ -30,12 +30,12 @@
                 <DataGridTextColumn Header="Estado" Binding="{Binding Path=Estado}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Label Content="Fecha de Publicacion:" HorizontalAlignment="Left" Margin="407,320,0,0" VerticalAlignment="Top"/>
-        <DatePicker Name="dp_FechaPublicacion" HorizontalAlignment="Left" Margin="540,320,0,0" VerticalAlignment="Top" Height="26"/>
-        <Button Name="btn_GuardarEjemplar" Content="Guardar Ejemplar" HorizontalAlignment="Left" Margin="580,387,0,0" VerticalAlignment="Top" Width="105" Click="Btn_GuardarEjemplar_Click"/>
-        <Label Content="Numero de ejemplar:" HorizontalAlignment="Left" Margin="407,350,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="txt_numEjemplar" HorizontalAlignment="Left" Height="20" Margin="540,356,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="145"/>
-        <Button Name="btn_buscarLibro"  HorizontalAlignment="Left" Margin="388,27,0,0" VerticalAlignment="Top" Width="37" Height="22">
+        <Label Content="Fecha de Publicacion:" HorizontalAlignment="Left" Margin="416,308,0,0" VerticalAlignment="Top"/>
+        <DatePicker Name="dp_FechaPublicacion" HorizontalAlignment="Left" Margin="549,308,0,0" VerticalAlignment="Top" Height="26"/>
+        <Button Name="btn_GuardarEjemplar" Content="Guardar Ejemplar" HorizontalAlignment="Left" Margin="589,375,0,0" VerticalAlignment="Top" Width="105" Click="Btn_GuardarEjemplar_Click"/>
+        <Label Content="Numero de ejemplar:" HorizontalAlignment="Left" Margin="416,338,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="txt_numEjemplar" HorizontalAlignment="Left" Height="20" Margin="549,344,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="145"/>
+        <Button Name="btn_buscarLibro"  HorizontalAlignment="Left" Margin="388,27,0,0" VerticalAlignment="Top" Width="37" Height="22" Click="Btn_buscarLibro_Click">
             <Image x:Name="ImageBuscar" Source="/imagenes/Search.png"/>
         </Button>
         <ComboBox x:Name="cbCampos" HorizontalAlignment="Left" Margin="21,27,0,0" VerticalAlignment="Top" Width="120"/>

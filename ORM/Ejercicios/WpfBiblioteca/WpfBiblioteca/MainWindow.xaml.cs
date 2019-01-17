@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -30,6 +31,7 @@ namespace WpfBiblioteca
             InitializeComponent();
             GridLibro.DataContext = l;
             dgEjemplares.ItemsSource = l.Ejemplares.ToList();
+            getPropiedades();
         }
 
         private void Btn_registrar_Click(object sender, RoutedEventArgs e)
@@ -70,6 +72,40 @@ namespace WpfBiblioteca
         {
             l = new Libro();
             GridLibro.DataContext = l;
+        }
+
+        public void getPropiedades()
+        {
+            PropertyInfo[] lst = typeof(Libro).GetProperties();
+
+            foreach (PropertyInfo oProperty in lst)
+            {
+                System.Type type = oProperty.GetType();
+                cbCampos.Items.Add(oProperty.Name);
+            }
+        }
+
+        private void Btn_buscarLibro_Click(object sender, RoutedEventArgs e)
+        {
+            l = new Libro();
+            l = uow.LibrosRepositorio.GetFiltrado(tbBusqueda.Text);
+            GridLibro.DataContext = l;
+            dgEjemplares.ItemsSource = l.Ejemplares;
+        }
+
+        private void Btn_modificar_Click(object sender, RoutedEventArgs e)
+        {
+            l.Isbn = txt_isbn.Text;
+            l.Titulo = txt_titulo.Text;
+            l.Editorial = txt_editorial.Text;
+            l.Descripcion = txt_descripcion.Text;
+
+            uow.LibrosRepositorio.Update(l);
+        }
+
+        private void Btn_eliminar_Click(object sender, RoutedEventArgs e)
+        {
+            uow.LibrosRepositorio.Delete(l);
         }
     }
 }

@@ -16,17 +16,16 @@ namespace WpfBiblioteca.DAL
         {
             if (!string.IsNullOrWhiteSpace(buscado))
             {
-            Libro  libro= Get(filter: (l => l.Titulo.ToUpper().Contains(buscado.ToUpper())
-                                            || l.Isbn.ToUpper().Contains(buscado.ToUpper())
-                                            || l.LibroId.ToString().ToUpper().Contains(buscado.ToUpper())),
+                Libro libro = Get(filter: (l => l.Titulo.ToUpper().Equals(buscado.ToUpper())
+                                                || l.Isbn.ToUpper().Equals(buscado.ToUpper())
+                                                || l.LibroId.ToString().ToUpper().Equals(buscado.ToUpper())),
                                            
-                                   includeProperties:"ejemplar").FirstOrDefault();
+                                   includeProperties:"Ejemplares").FirstOrDefault();
 
                 return libro;
             }
             else return null;
         }
 
-    
     }
 }
