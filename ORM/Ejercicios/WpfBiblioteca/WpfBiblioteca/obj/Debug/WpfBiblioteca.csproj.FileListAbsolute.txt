@@ -20,3 +20,9 @@ C:\Users\dam209\Desktop\ACDA\Segundo trimestre\ORM\Ejercicios\WpfBiblioteca\WpfB
 C:\Users\dam209\Desktop\ACDA\Segundo trimestre\ORM\Ejercicios\WpfBiblioteca\WpfBiblioteca\obj\Debug\WpfBiblioteca.pdb
 C:\Users\dam209\Desktop\ACDA\Segundo trimestre\ORM\Ejercicios\WpfBiblioteca\WpfBiblioteca\obj\Debug\WpfBiblioteca.Migrations.inicial.resources
 C:\Users\dam209\Desktop\ACDA\Segundo trimestre\ORM\Ejercicios\WpfBiblioteca\WpfBiblioteca\obj\Debug\WpfBiblioteca.Migrations.inicial1.resources
+C:\Users\dam209\Desktop\ACDA\Segundo trimestre\ORM\Ejercicios\WpfBiblioteca\WpfBiblioteca\obj\Debug\MenuWindow.g.cs
+C:\Users\dam209\Desktop\ACDA\Segundo trimestre\ORM\Ejercicios\WpfBiblioteca\WpfBiblioteca\obj\Debug\MenuWindow.baml
+C:\Users\dam209\Desktop\ACDA\Segundo trimestre\ORM\Ejercicios\WpfBiblioteca\WpfBiblioteca\obj\Debug\SociosWindow.g.cs
+C:\Users\dam209\Desktop\ACDA\Segundo trimestre\ORM\Ejercicios\WpfBiblioteca\WpfBiblioteca\obj\Debug\SociosWindow.baml
+C:\Users\dam209\Desktop\ACDA\Segundo trimestre\ORM\Ejercicios\WpfBiblioteca\WpfBiblioteca\obj\Debug\PrestamosWindow.g.cs
+C:\Users\dam209\Desktop\ACDA\Segundo trimestre\ORM\Ejercicios\WpfBiblioteca\WpfBiblioteca\obj\Debug\PrestamosWindow.baml

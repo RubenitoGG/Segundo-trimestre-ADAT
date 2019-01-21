@@ -16,14 +16,13 @@ namespace WpfBiblioteca.DAL
         {
             if (!string.IsNullOrWhiteSpace(buscado))
             {
-                return Get(filter: (socio => socio.Apellidos.ToUpper().Contains(buscado.ToUpper())
-                                            || socio.Nombre.ToUpper().Contains(buscado.ToUpper())
-                                            || socio.SocioId.ToString().ToUpper().Contains(buscado.ToUpper())
-                                            || socio.Telefono.ToUpper().Contains(buscado.ToUpper())
-
-                                            || socio.Dni.ToUpper().Contains(buscado.ToUpper())
+                return Get(filter: (socio => socio.Apellidos.ToUpper().Equals(buscado.ToUpper())
+                                            || socio.Nombre.ToUpper().Equals(buscado.ToUpper())
+                                            || socio.SocioId.ToString().ToUpper().Equals(buscado.ToUpper())
+                                            || socio.Telefono.ToUpper().Equals(buscado.ToUpper())
+                                            || socio.Dni.ToUpper().Equals(buscado.ToUpper())
                                             ),
-                                includeProperties: "prestamo");
+                                includeProperties: "Prestamos");
             }
             else return Get();
         }

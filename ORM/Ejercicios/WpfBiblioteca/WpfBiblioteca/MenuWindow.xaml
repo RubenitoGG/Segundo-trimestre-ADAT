@@ -1,0 +1,17 @@
+﻿<Window x:Class="WpfBiblioteca.MenuWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfBiblioteca"
+        mc:Ignorable="d"
+        Title="MenuWindow" Height="450" Width="800">
+    <Grid>
+        <Grid>
+            <Button Name="btn_mantLibros" Content="Mantenimiento Libros" HorizontalAlignment="Left" Margin="38,70,0,0" VerticalAlignment="Top" Width="227" Height="65" Background="#FF5FA0EE" FontSize="18" Click="Btn_mantLibros_Click"/>
+            <Button Name="btn_mantSocios" Content="Mantenimiento Socios" HorizontalAlignment="Left" Margin="38,170,0,0" VerticalAlignment="Top" Width="227" Height="65" Background="#FF4E99F3" FontSize="18" Click="Btn_mantSocios_Click"/>
+            <Button Name="btn_registrarPrest" Content="Mantenimiento Prestamos" HorizontalAlignment="Left" Margin="38,272,0,0" VerticalAlignment="Top" Width="227" Height="65" Background="#FF589BEC" FontSize="18"/>
+            <Image x:Name="image" HorizontalAlignment="Left" Height="384" Margin="309,17,0,0" VerticalAlignment="Top" Width="473" Source="imagenes/imagbiblio.jpg"/>
+        </Grid>
+    </Grid>
+</Window>
