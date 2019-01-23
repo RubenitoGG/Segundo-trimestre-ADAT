@@ -24,5 +24,7 @@ C:\Users\dam209\Desktop\ACDA\Segundo trimestre\ORM\Ejercicios\WpfBiblioteca\WpfB
 C:\Users\dam209\Desktop\ACDA\Segundo trimestre\ORM\Ejercicios\WpfBiblioteca\WpfBiblioteca\obj\Debug\MenuWindow.baml
 C:\Users\dam209\Desktop\ACDA\Segundo trimestre\ORM\Ejercicios\WpfBiblioteca\WpfBiblioteca\obj\Debug\SociosWindow.g.cs
 C:\Users\dam209\Desktop\ACDA\Segundo trimestre\ORM\Ejercicios\WpfBiblioteca\WpfBiblioteca\obj\Debug\SociosWindow.baml
-C:\Users\dam209\Desktop\ACDA\Segundo trimestre\ORM\Ejercicios\WpfBiblioteca\WpfBiblioteca\obj\Debug\PrestamosWindow.g.cs
-C:\Users\dam209\Desktop\ACDA\Segundo trimestre\ORM\Ejercicios\WpfBiblioteca\WpfBiblioteca\obj\Debug\PrestamosWindow.baml
+C:\Users\dam209\Desktop\ACDA\Segundo trimestre\ORM\Ejercicios\WpfBiblioteca\WpfBiblioteca\obj\Debug\RegistrarPrestamoWindow.g.cs
+C:\Users\dam209\Desktop\ACDA\Segundo trimestre\ORM\Ejercicios\WpfBiblioteca\WpfBiblioteca\obj\Debug\RegistrarPrestamoWindow.baml
+C:\Users\dam209\Desktop\ACDA\Segundo trimestre\ORM\Ejercicios\WpfBiblioteca\WpfBiblioteca\obj\Debug\DevolverPrestamoWindow.g.cs
+C:\Users\dam209\Desktop\ACDA\Segundo trimestre\ORM\Ejercicios\WpfBiblioteca\WpfBiblioteca\obj\Debug\DevolverPrestamoWindow.baml

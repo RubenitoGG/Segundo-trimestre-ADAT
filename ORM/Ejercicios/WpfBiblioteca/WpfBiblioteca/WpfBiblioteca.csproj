@@ -62,12 +62,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="PrestamosWindow.xaml.cs">
-      <DependentUpon>PrestamosWindow.xaml</DependentUpon>
+    <Compile Include="DevolverPrestamoWindow.xaml.cs">
+      <DependentUpon>DevolverPrestamoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarPrestamoWindow.xaml.cs">
+      <DependentUpon>RegistrarPrestamoWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SociosWindow.xaml.cs">
       <DependentUpon>SociosWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="DevolverPrestamoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -90,7 +97,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PrestamosWindow.xaml">
+    <Page Include="RegistrarPrestamoWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

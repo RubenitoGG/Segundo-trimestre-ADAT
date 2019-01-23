@@ -21,7 +21,7 @@
         <Button Name="btn_registrar" Content="Registrar" HorizontalAlignment="Left" Margin="105,353,0,0" VerticalAlignment="Top" Width="58" Click="Btn_registrar_Click"/>
         <Button Name="btn_modificar" Content="Modificar" HorizontalAlignment="Left" Margin="170,353,0,0" VerticalAlignment="Top" Width="56" Click="Btn_modificar_Click"/>
         <Button Name="btn_eliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="233,353,0,0" VerticalAlignment="Top" Width="62" Click="Btn_eliminar_Click"/>
-        <Label Content="Ejemplares" HorizontalAlignment="Left" Margin="387,54,0,0" VerticalAlignment="Top"/>
+        <Label Content="Ejemplares:" HorizontalAlignment="Left" Margin="387,54,0,0" VerticalAlignment="Top"/>
         <DataGrid x:Name="dgEjemplares"  AutoGenerateColumns="false" HorizontalAlignment="Left" Height="201" Margin="394,85,0,0" VerticalAlignment="Top" Width="355" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Codigo Libro" Binding="{Binding Path=LibroId}"/>

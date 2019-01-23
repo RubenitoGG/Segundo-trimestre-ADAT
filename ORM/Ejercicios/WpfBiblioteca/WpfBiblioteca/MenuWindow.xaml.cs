@@ -35,5 +35,17 @@ namespace WpfBiblioteca
             SociosWindow nuevaVentana = new SociosWindow();
             nuevaVentana.Show();
         }
+
+        private void Btn_registrarPrest_Click(object sender, RoutedEventArgs e)
+        {
+            RegistrarPrestamoWindow nuevaVentana = new RegistrarPrestamoWindow();
+            nuevaVentana.Show();
+        }
+
+        private void Btn_devolverPrest_Click(object sender, RoutedEventArgs e)
+        {
+            DevolverPrestamoWindow nuevaVentana = new DevolverPrestamoWindow();
+            nuevaVentana.Show();
+        }
     }
 }

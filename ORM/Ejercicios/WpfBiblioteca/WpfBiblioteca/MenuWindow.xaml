@@ -8,10 +8,11 @@
         Title="MenuWindow" Height="450" Width="800">
     <Grid>
         <Grid>
-            <Button Name="btn_mantLibros" Content="Mantenimiento Libros" HorizontalAlignment="Left" Margin="38,70,0,0" VerticalAlignment="Top" Width="227" Height="65" Background="#FF5FA0EE" FontSize="18" Click="Btn_mantLibros_Click"/>
-            <Button Name="btn_mantSocios" Content="Mantenimiento Socios" HorizontalAlignment="Left" Margin="38,170,0,0" VerticalAlignment="Top" Width="227" Height="65" Background="#FF4E99F3" FontSize="18" Click="Btn_mantSocios_Click"/>
-            <Button Name="btn_registrarPrest" Content="Mantenimiento Prestamos" HorizontalAlignment="Left" Margin="38,272,0,0" VerticalAlignment="Top" Width="227" Height="65" Background="#FF589BEC" FontSize="18"/>
+            <Button Name="btn_mantLibros" Content="Mantenimiento Libros" HorizontalAlignment="Left" Margin="38,26,0,0" VerticalAlignment="Top" Width="227" Height="65" Background="#FF5FA0EE" FontSize="18" Click="Btn_mantLibros_Click"/>
+            <Button Name="btn_mantSocios" Content="Mantenimiento Socios" HorizontalAlignment="Left" Margin="38,119,0,0" VerticalAlignment="Top" Width="227" Height="65" Background="#FF4E99F3" FontSize="18" Click="Btn_mantSocios_Click"/>
+            <Button Name="btn_registrarPrest" Content="Registrar Prestamos" HorizontalAlignment="Left" Margin="38,218,0,0" VerticalAlignment="Top" Width="227" Height="65" Background="#FF589BEC" FontSize="18" Click="Btn_registrarPrest_Click"/>
             <Image x:Name="image" HorizontalAlignment="Left" Height="384" Margin="309,17,0,0" VerticalAlignment="Top" Width="473" Source="imagenes/imagbiblio.jpg"/>
+            <Button x:Name="btn_devolverPrest" Content="Devolver Prestamos" HorizontalAlignment="Left" Margin="38,321,0,0" VerticalAlignment="Top" Width="227" Height="65" Background="#FF589BEC" FontSize="18" Click="Btn_devolverPrest_Click"/>
         </Grid>
     </Grid>
 </Window>

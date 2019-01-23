@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\dam209\Desktop\ACDA\Segundo trimestre\ORM\Ejercicios\WpfBiblioteca\WpfBiblioteca\App.xaml
-4-352837771
+51948576142
 
-23-565435892
+241354147722
 16-735929093
-MainWindow.xaml;MenuWindow.xaml;PrestamosWindow.xaml;SociosWindow.xaml;
+DevolverPrestamoWindow.xaml;MainWindow.xaml;MenuWindow.xaml;RegistrarPrestamoWindow.xaml;SociosWindow.xaml;
 
 False
 

@@ -1,0 +1,41 @@
+﻿<Window x:Class="WpfBiblioteca.RegistrarPrestamoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfBiblioteca"
+        mc:Ignorable="d"
+        Title="RegistrarPrestamoWindow" Height="450" Width="845">
+    <Grid>
+        <DataGrid x:Name="dgSocios" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="280" Margin="36,105,0,0" VerticalAlignment="Top" Width="311" SelectionChanged="DgSocios_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding SocioId}"/>
+                <DataGridTextColumn Header="Dni" Binding="{Binding Dni}"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}"/>
+                <DataGridTextColumn Header="Apellidos" Binding="{Binding Apellidos}"/>
+                <DataGridTextColumn Header="Direccion" Binding="{Binding Direccion}"/>
+                <DataGridTextColumn Header="Correo" Binding="{Binding Correo}"/>
+                <DataGridTextColumn Header="Telefono" Binding="{Binding Telefono}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid x:Name="dgEjemplares" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="280" Margin="493,105,0,0" VerticalAlignment="Top" Width="316" SelectionChanged="DgEjemplares_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="LibroId" Binding="{Binding LibroId}"/>
+                <DataGridTextColumn Header="Numero Ejemplar" Binding="{Binding NumeroEjemplar}"/>
+                <DataGridTextColumn Header="Fecha Publicacion" Binding="{Binding FechaPublicacion}"/>
+                <DataGridTextColumn Header="Estado" Binding="{Binding Estado}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Registrar" HorizontalAlignment="Left" Margin="352,316,0,0" VerticalAlignment="Top" Width="136" Height="69" FontSize="14" Click="Button_Click"/>
+        <Label Content="Socios:" HorizontalAlignment="Left" Margin="36,74,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="Ejemplares:" HorizontalAlignment="Left" Margin="493,74,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="txt_socios" HorizontalAlignment="Left" Height="25" Margin="57,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="215"/>
+        <Button x:Name="btn_buscar_socios"  HorizontalAlignment="Left" Margin="288,38,0,0" VerticalAlignment="Top" Width="38" Height="25" Click="Btn_buscar_socios_Click">
+            <Image x:Name="ImageBuscar" Source="imagenes/Search.png"/>
+        </Button>
+        <TextBox x:Name="txt_libro" HorizontalAlignment="Left" Height="25" Margin="513,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="215"/>
+        <Button x:Name="btn_buscar_ejemplares"  HorizontalAlignment="Left" Margin="744,38,0,0" VerticalAlignment="Top" Width="38" Height="25" Click="Btn_buscar_ejemplares_Click">
+            <Image x:Name="ImageBuscar1" Source="imagenes/Search.png"/>
+        </Button>
+    </Grid>
+</Window>
