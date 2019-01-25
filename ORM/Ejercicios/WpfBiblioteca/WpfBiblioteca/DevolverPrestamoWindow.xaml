@@ -21,9 +21,11 @@
         <DataGrid x:Name="dgPrestamos" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="280" Margin="363,105,0,0" VerticalAlignment="Top" Width="316" SelectionChanged="DgEjemplares_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Libro Id" Binding="{Binding LibroId}"/>
+                <DataGridTextColumn Header="Estado" Binding="{Binding Ejemplar.Estado}"/>
                 <DataGridTextColumn Header="Numero Ejemplar" Binding="{Binding NumeroEjemp}"/>
                 <DataGridTextColumn Header="Socio Id" Binding="{Binding SocioId}"/>
                 <DataGridTextColumn Header="Fecha Prestamo" Binding="{Binding FechaPrestamo}"/>
+                <DataGridTextColumn Header="Fecha Devolucion" Binding="{Binding FechaDevolucion}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="btn_devolver" Content="Devolver" HorizontalAlignment="Left" Margin="687,316,0,0" VerticalAlignment="Top" Width="136" Height="69" FontSize="14" Click="Btn_devolver_Click"/>

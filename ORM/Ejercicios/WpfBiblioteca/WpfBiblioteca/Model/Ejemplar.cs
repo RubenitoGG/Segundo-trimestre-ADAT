@@ -13,8 +13,12 @@ namespace WpfBiblioteca.Model
     {
         [Key, ForeignKey("Libro"), Column(Order = 0)]
         public int LibroId { get; set; }
+
+        [Required(ErrorMessage = "Nº Ejemplar obligatorio.")]
         [Key, Column(Order = 1)]
         public int NumeroEjemplar { get; set; }
+
+        [Required(ErrorMessage = "Fecha obligatoria.")]
         public Nullable<System.DateTime> FechaPublicacion { get; set; }
         public string Estado { get; set; }
         public virtual Libro Libro { get; set; }

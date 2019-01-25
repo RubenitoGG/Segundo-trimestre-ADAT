@@ -25,6 +25,7 @@ namespace WpfBiblioteca
     {
         UnitOfWork uow = new UnitOfWork();
         Libro l = new Libro();
+        PropertyValidateModel validador = new PropertyValidateModel();
 
         public MainWindow()
         {
@@ -36,16 +37,9 @@ namespace WpfBiblioteca
 
         private void Btn_registrar_Click(object sender, RoutedEventArgs e)
         {
-            // NO SE HACE PORQUE TIENE UN BINDING:
-            //l = new Libro
-            //{
-            //    Isbn = txt_isbn.Text,
-            //    Titulo = txt_titulo.Text,
-            //    Editorial = txt_editorial.Text,
-            //    Descripcion = txt_descripcion.Text
-            //};
-
-            uow.LibrosRepositorio.Añadir(l);
+            if (validador.errores(l) == "")
+                uow.LibrosRepositorio.Añadir(l);
+            else MessageBox.Show(validador.errores(l));
         }
 
         private void Btn_GuardarEjemplar_Click(object sender, RoutedEventArgs e)
@@ -60,12 +54,16 @@ namespace WpfBiblioteca
                 FechaPublicacion = dp_FechaPublicacion.SelectedDate,
                 Estado = "D"
             };
-
             l.Ejemplares.Add(ejem);
 
-            if(uow.LibrosRepositorio.Get(libro => libro.Isbn.Equals(txt_isbn.Text)).FirstOrDefault() != null)
-                uow.LibrosRepositorio.Update(l);
-            dgEjemplares.ItemsSource = l.Ejemplares;
+            if (validador.errores(l) == "")
+            {
+                if (uow.LibrosRepositorio.Get(libro => libro.Isbn.Equals(txt_isbn.Text)).FirstOrDefault() != null)
+                    uow.LibrosRepositorio.Update(l);
+                dgEjemplares.ItemsSource = l.Ejemplares;
+            }
+            else MessageBox.Show(validador.errores(l));
+            
         }
 
         private void BtNuevo_Click(object sender, RoutedEventArgs e)

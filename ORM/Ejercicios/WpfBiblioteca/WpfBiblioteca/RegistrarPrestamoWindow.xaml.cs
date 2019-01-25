@@ -60,7 +60,8 @@ namespace WpfBiblioteca
                     LibroId = this.e.LibroId,
                     SocioId = this.s.SocioId,
                     FechaPrestamo = DateTime.Today,
-                    NumeroEjemp = Convert.ToInt16(this.e.NumeroEjemplar)
+                    NumeroEjemp = Convert.ToInt16(this.e.NumeroEjemplar),
+                    Ejemplar = this.e
                 };
 
                 uow.PrestamosRepositorio.Añadir(p);

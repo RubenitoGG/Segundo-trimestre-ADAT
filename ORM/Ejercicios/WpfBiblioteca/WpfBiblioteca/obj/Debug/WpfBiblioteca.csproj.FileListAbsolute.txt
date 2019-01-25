@@ -28,3 +28,4 @@ C:\Users\dam209\Desktop\ACDA\Segundo trimestre\ORM\Ejercicios\WpfBiblioteca\WpfB
 C:\Users\dam209\Desktop\ACDA\Segundo trimestre\ORM\Ejercicios\WpfBiblioteca\WpfBiblioteca\obj\Debug\RegistrarPrestamoWindow.baml
 C:\Users\dam209\Desktop\ACDA\Segundo trimestre\ORM\Ejercicios\WpfBiblioteca\WpfBiblioteca\obj\Debug\DevolverPrestamoWindow.g.cs
 C:\Users\dam209\Desktop\ACDA\Segundo trimestre\ORM\Ejercicios\WpfBiblioteca\WpfBiblioteca\obj\Debug\DevolverPrestamoWindow.baml
+C:\Users\dam209\Desktop\ACDA\Segundo trimestre\ORM\Ejercicios\WpfBiblioteca\WpfBiblioteca\obj\Debug\WpfBiblioteca.Migrations.comprobacion.resources

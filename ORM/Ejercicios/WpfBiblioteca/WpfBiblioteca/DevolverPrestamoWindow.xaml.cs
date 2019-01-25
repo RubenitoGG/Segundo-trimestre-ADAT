@@ -47,7 +47,7 @@ namespace WpfBiblioteca
 
         private void DgEjemplares_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            p = (Prestamo)(dgPrestamos.SelectedItem);
+            p = (Prestamo)dgPrestamos.SelectedItem;
         }
 
         private void Btn_devolver_Click(object sender, RoutedEventArgs e)
