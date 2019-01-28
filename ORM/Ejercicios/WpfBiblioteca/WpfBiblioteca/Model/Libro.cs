@@ -15,7 +15,7 @@ namespace WpfBiblioteca.Model
 
         [Required(ErrorMessage = "Isbn obligatorio.")]
         [Index(IsUnique = true)]
-        [StringLength(10)]
+        [StringLength(10, MinimumLength = 10)]
         public string Isbn { get; set; }
 
         [Required(ErrorMessage = "Titulo obligatorio.")]
