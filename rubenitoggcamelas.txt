@@ -1,0 +1,7 @@
+1. Tener la base de datos creada en SQL.
+2. En el proyecto de Visual Studio ir a Proyecto/Agregar nuevo origen de datos.
+3. Seleccionamos Base de datos y le damos a siguiente, siguiente y elegimos nuevo conexion.
+4. Eliges el origen de datos que desees. En este caso el Microsoft SQL Server y le das a continuar.
+5. En nombre de servidor le pones .\SqlExpress que es el servidor al cual estamos conectados.
+6. En 'seleccionar o escribir el nombre de la base' escogemos que base queremos coger y le damos a aceptar.
+7. Luego le damos a siguiente, siguiente y eligo lo que deseo obtener de la base de datos y le doy a finalizar.

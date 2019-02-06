@@ -6,16 +6,15 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using WpfBiblioteca.DAL;
 
-namespace WpfBiblioteca.DAL
+namespace GestorTiendaInformatica.DAL
 {
     public class GenericRepository<TEntity> where TEntity : class
     {
-      internal BibliotecaContext context;
-      internal  DbSet<TEntity> dbSet;
+        internal TiendaInformaticaContext context;
+        internal DbSet<TEntity> dbSet;
 
-        public GenericRepository(BibliotecaContext context)
+        public GenericRepository(TiendaInformaticaContext context)
         {
             this.context = context;
             dbSet = context.Set<TEntity>();
@@ -32,7 +31,6 @@ namespace WpfBiblioteca.DAL
             {
                 Console.WriteLine(error.ToString());
             }
-
         }
 
         public void Delete(TEntity entityToDelete)
@@ -46,7 +44,6 @@ namespace WpfBiblioteca.DAL
 
             context.Entry(entityToDelete).State = EntityState.Deleted;
             context.SaveChanges();
-
         }
 
         public void Delete(Expression<Func<TEntity, bool>> predicate)
@@ -68,48 +65,34 @@ namespace WpfBiblioteca.DAL
             catch (DbEntityValidationException ex)
             {
                 var errorMessages = ex.EntityValidationErrors
-                        .SelectMany(x => x.ValidationErrors)
-                        .Select(x => x.ErrorMessage);
+                    .SelectMany(x => x.ValidationErrors)
+                    .Select(x => x.ErrorMessage);
 
                 var fullErrorMessage = string.Join("; ", errorMessages);
 
                 var exceptionMessage = string.Concat(ex.Message, " The validation errors are: ", fullErrorMessage);
-
-                // throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
             }
         }
 
         public List<TEntity> GetAll()
         {
             return (List<TEntity>)context.Set<TEntity>().ToList();
-
         }
 
-        public List<TEntity> Get(
-            Expression<Func<TEntity, bool>> filter = null,
-            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+        public List<TEntity> Get(Expression<Func<TEntity, bool>> filter = null,
+            Func<IQueryable<TEntity>, IOrderedEnumerable<TEntity>> orderBy = null,
             string includeProperties = "")
         {
             dbSet = context.Set<TEntity>();
             IQueryable<TEntity> query = dbSet;
             if (filter != null)
-            {
                 query = query.Where(filter);
-            }
-            foreach (var includeProperty in includeProperties.Split
-            (new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
-            {
-                query = query.Include(includeProperty);
-            }
+            foreach (var includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                query = query.Include(includeProperties);
             if (orderBy != null)
-            {
                 return orderBy(query).ToList();
-            }
             else
-            {
                 return query.ToList();
-            }
-
         }
 
         public TEntity Single(Expression<Func<TEntity, bool>> predicate)
