@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,15 +17,21 @@ using System.Windows.Shapes;
 namespace GestorTiendaInformatica
 {
     /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
+    /// Lógica de interacción para PaginaInicio.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class PaginaInicio : Page
     {
-        public MainWindow()
+        Frame f;
+        public PaginaInicio(Frame f)
         {
             InitializeComponent();
-            PaginaInicio pI = new PaginaInicio(frameVentana);
-            frameVentana.Content = pI;
+            this.f = f;
+        }
+
+        private void BotonRegistrarse_Click(object sender, RoutedEventArgs e)
+        {
+            PaginaRegistro pG = new PaginaRegistro(f);
+            f.Content = pG;
         }
     }
 }

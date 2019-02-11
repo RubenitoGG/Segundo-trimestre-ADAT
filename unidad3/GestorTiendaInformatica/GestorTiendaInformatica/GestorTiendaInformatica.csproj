@@ -97,6 +97,12 @@
       <DependentUpon>201902061011577_productoes.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="PaginaInicio.xaml.cs">
+      <DependentUpon>PaginaInicio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PaginaRegistro.xaml.cs">
+      <DependentUpon>PaginaRegistro.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TiendaInformaticaDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -114,6 +120,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PaginaInicio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PaginaRegistro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Categoria.cs" />
