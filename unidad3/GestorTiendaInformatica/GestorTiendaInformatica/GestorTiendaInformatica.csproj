@@ -97,11 +97,29 @@
       <DependentUpon>201902061011577_productoes.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="PaginaCategoria.xaml.cs">
+      <DependentUpon>PaginaCategoria.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PaginaClientes.xaml.cs">
+      <DependentUpon>PaginaClientes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PaginaInformes.xaml.cs">
+      <DependentUpon>PaginaInformes.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PaginaInicio.xaml.cs">
       <DependentUpon>PaginaInicio.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PaginaProductos.xaml.cs">
+      <DependentUpon>PaginaProductos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PaginaProveedores.xaml.cs">
+      <DependentUpon>PaginaProveedores.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PaginaRegistro.xaml.cs">
       <DependentUpon>PaginaRegistro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PaginaUsuarios.xaml.cs">
+      <DependentUpon>PaginaUsuarios.xaml</DependentUpon>
     </Compile>
     <Compile Include="TiendaInformaticaDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -120,11 +138,35 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PaginaCategoria.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PaginaClientes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PaginaInformes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PaginaInicio.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PaginaProductos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PaginaProveedores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PaginaRegistro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PaginaUsuarios.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -40,12 +40,21 @@ namespace GestorTiendaInformatica
         private void BotonAgregar_Click(object sender, RoutedEventArgs e)
         {
             // COMPROBACIONES:
-
+            List<Usuario> usuarios = uow.UsuarioRepositorio.GetAll();
+            foreach (Usuario usuario in usuarios)
+            {
+               if(usuario.user == textUsuario.Text)
+                {
+                    MessageBox.Show("Nombre de usuario ya en uso", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                    textUsuario.Text = "";
+                    return;
+                }
+            }
             // CREAR USUARIO:
             Usuario u = new Usuario
             {
-                Nombre = textNombre.Text,
-                user = textUsuario.Text,
+                Nombre = textNombre.Text.Trim(),
+                user = textUsuario.Text.Trim(),
                 password = textContraseña.Password,
                 TipoCuenta = "Usuario"
             };

@@ -15,7 +15,7 @@
         <TextBox x:Name="textUsuario" HorizontalAlignment="Left" Height="34" Margin="178,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="208" FontSize="20"/>
         <PasswordBox x:Name="textContraseña" HorizontalAlignment="Left" Height="34" Margin="178,176,0,0" VerticalAlignment="Top" Width="208" FontSize="20"/>
         <TextBox x:Name="textContraseñaMuestra" Visibility="Hidden" HorizontalAlignment="Left" Height="34" Margin="182,171,0,0" VerticalAlignment="Top" Width="208" FontSize="20"/>
-        <Button x:Name="botonEntrar" Content="Entrar" HorizontalAlignment="Left" Height="36" Margin="152,240,0,0" VerticalAlignment="Top" Width="134" FontSize="20"/>
+        <Button x:Name="botonEntrar" Content="Entrar" HorizontalAlignment="Left" Height="36" Margin="152,240,0,0" VerticalAlignment="Top" Width="134" FontSize="20" Click="BotonEntrar_Click"/>
         <Label Content="¿No tienes cuenta?" HorizontalAlignment="Left" Margin="130,298,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Button x:Name="botonRegistrarse" Content="Registrarse" HorizontalAlignment="Left" Height="36" Margin="130,354,0,0" VerticalAlignment="Top" Width="176" FontSize="20" Click="BotonRegistrarse_Click"/>
     </Grid>

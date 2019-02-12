@@ -16,23 +16,15 @@ using System.Windows.Shapes;
 namespace GestorTiendaInformatica
 {
     /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
+    /// Lógica de interacción para PaginaUsuarios.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class PaginaUsuarios : Page
     {
-        PaginaInicio pI;
-
-        public MainWindow()
+        Frame f;
+        public PaginaUsuarios(Frame f)
         {
             InitializeComponent();
-            this.pI = new PaginaInicio(frameVentana);
-            frameVentana.Content = pI;
-        }
-
-        private void BotonCerrarSesion_Click(object sender, RoutedEventArgs e)
-        {
-
-            frameVentana.Content = pI;
+            this.f = f;
         }
     }
 }

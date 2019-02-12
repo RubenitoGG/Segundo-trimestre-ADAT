@@ -1,0 +1,53 @@
+﻿<Page x:Class="GestorTiendaInformatica.PaginaClientes"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GestorTiendaInformatica"
+      mc:Ignorable="d" 
+      d:DesignHeight="493" d:DesignWidth="1192"
+      Title="PaginaClientes">
+
+    <Grid Background="#FFCFCBCB" Margin="106,20,106,30">
+        <Label Content="Gestión de clientes" HorizontalAlignment="Center" Margin="396,18,396,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+        <DataGrid x:Name="cb_clientes" HorizontalAlignment="Left" Height="138" Margin="43,68,0,0" VerticalAlignment="Top" Width="898"/>
+        <TextBox x:Name="txt_id" HorizontalAlignment="Left" Height="34" Margin="162,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="208" FontSize="14"/>
+        <TextBox x:Name="txt_nombre" HorizontalAlignment="Left" Height="34" Margin="162,258,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="208" FontSize="14"/>
+        <TextBox x:Name="txt_telefono" HorizontalAlignment="Left" Height="34" Margin="162,297,0,0" VerticalAlignment="Top" Width="208" FontSize="14"/>
+        <PasswordBox x:Name="txt_email" HorizontalAlignment="Left" Height="34" Margin="162,337,0,0" VerticalAlignment="Top" Width="208" FontSize="14"/>
+        <Label Content="Nombre" HorizontalAlignment="Left" Margin="76,257,0,0" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="0.901,0.412"/>
+        <Label Content="Teléfono" HorizontalAlignment="Left" Margin="76,296,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="ID Cliente" HorizontalAlignment="Left" Margin="66,219,0,0" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="0.901,0.412"/>
+        <Label Content="Correo Electrónico" HorizontalAlignment="Left" Margin="12,337,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="Dirección" HorizontalAlignment="Left" Margin="66,376,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="txt_direccion" HorizontalAlignment="Left" Height="34" Margin="162,376,0,0" VerticalAlignment="Top" Width="208" FontSize="14"/>
+        <Button x:Name="btn_limpiar" Content="Limpiar" HorizontalAlignment="Left" Margin="408,219,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647"/>
+        <Button x:Name="btn_eliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="408,297,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647"/>
+        <Button x:Name="btn_guardar" Content="Guardar" HorizontalAlignment="Left" Margin="408,258,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647"/>
+        <PasswordBox x:Name="txt_buscar" HorizontalAlignment="Left" Height="34" Margin="408,376,0,0" VerticalAlignment="Top" Width="208" FontSize="14"/>
+        <Button x:Name="btn_buscar" Content="Buscar" HorizontalAlignment="Left" Margin="408,337,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647"/>
+        <DataGrid x:Name="cb_compras" HorizontalAlignment="Left" Height="100" Margin="696,216,0,0" VerticalAlignment="Top" Width="245"/>
+        <DataGrid x:Name="cb_detalles" HorizontalAlignment="Left" Height="100" Margin="696,325,0,0" VerticalAlignment="Top" Width="245"/>
+        <Label Content="Compras" HorizontalAlignment="Left" Margin="631,236,0,0" VerticalAlignment="Top" FontSize="11" RenderTransformOrigin="0.901,0.412">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label Content="Detalles de compra" HorizontalAlignment="Left" Margin="586,326,0,0" VerticalAlignment="Top" FontSize="11" RenderTransformOrigin="0.901,0.412">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+
+    </Grid>
+</Page>

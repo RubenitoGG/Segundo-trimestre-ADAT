@@ -23,6 +23,6 @@
         </Menu>
         <Frame x:Name="frameVentana" HorizontalAlignment="Left" Height="493" Margin="0,74,0,0" VerticalAlignment="Top" Width="1192" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden"/>
         <Label x:Name="labelIdentidad" Content="Sin identificar" HorizontalAlignment="Left" Margin="412.5,572,0,0" VerticalAlignment="Top" FontSize="20" Grid.Column="1"/>
-        <Button x:Name="botonCerrarSesion" Content="Cerrar Sesión" HorizontalAlignment="Left" Height="36" Margin="887.5,573,0,0" VerticalAlignment="Top" Width="177" FontSize="20" Grid.Column="1"/>
+        <Button x:Name="botonCerrarSesion" Content="Cerrar Sesión" HorizontalAlignment="Left" Height="36" Margin="887.5,573,0,0" VerticalAlignment="Top" Width="177" FontSize="20" Grid.Column="1" Click="BotonCerrarSesion_Click"/>
     </Grid>
 </Window>
