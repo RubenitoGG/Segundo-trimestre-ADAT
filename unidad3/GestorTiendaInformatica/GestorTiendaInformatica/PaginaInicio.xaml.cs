@@ -25,13 +25,15 @@ namespace GestorTiendaInformatica
     {
         Frame f;
         UnitOfWork uow = new UnitOfWork();
+        MainWindow ventanaPrincipal;
 
-        public PaginaInicio(Frame f)
+        public PaginaInicio(Frame f, MainWindow ventana)
         {
             InitializeComponent();
             this.f = f;
             textUsuario.Text = "";
             textContraseña.Password = "";
+            this.ventanaPrincipal = ventana;
         }
 
         private void BotonRegistrarse_Click(object sender, RoutedEventArgs e)
@@ -43,13 +45,18 @@ namespace GestorTiendaInformatica
         private void BotonEntrar_Click(object sender, RoutedEventArgs e)
         {
             List<Usuario> usuarios = uow.UsuarioRepositorio.GetAll();
+            bool b = false;
             foreach (Usuario usuario in usuarios)
             {
                 if (textUsuario.Text == usuario.user && textContraseña.Password == usuario.password)
+                {
                     this.f.Content = new PaginaClientes(f);
-                else
-                    MessageBox.Show("Usuario o contraseña incorrectos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    ventanaPrincipal.RecogerUsuario(usuario);
+                    b = true;
+                }
             }
+            if(!b)
+                MessageBox.Show("Usuario o contraseña incorrectos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }

@@ -33,7 +33,7 @@ namespace GestorTiendaInformatica
 
         private void BotonVolver_Click(object sender, RoutedEventArgs e)
         {
-            PaginaInicio pI = new PaginaInicio(f);
+            PaginaInicio pI = new PaginaInicio(f, new MainWindow());
             f.Content = pI;
         }
 

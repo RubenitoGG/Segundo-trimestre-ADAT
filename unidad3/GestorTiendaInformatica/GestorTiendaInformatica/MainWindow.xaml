@@ -11,18 +11,18 @@
             <ColumnDefinition Width="118*"/>
             <ColumnDefinition Width="1075*"/>
         </Grid.ColumnDefinitions>
-        <Menu x:Name="menuTienda" HorizontalAlignment="Left" Height="59" Margin="0,10,0,0" VerticalAlignment="Top" Width="1192" TextOptions.TextFormattingMode="Display" Background="#FF1098AE" Grid.ColumnSpan="2">
-            <MenuItem x:Name="menuInicio" FontSize="24" Header="Inicio" Height="59" Width="119"/>
-            <MenuItem x:Name="menuUsuario" FontSize="24" Header="Usuarios" Height="59" Width="136"/>
-            <MenuItem x:Name="menuCliente" FontSize="24" Header="Clientes" Height="59" Width="149"/>
-            <MenuItem x:Name="menuProveedores" FontSize="24" Header="Provedores" Height="59" Width="185"/>
-            <MenuItem x:Name="menuCategoria" FontSize="24" Header="Categorías" Height="59" Width="174"/>
-            <MenuItem x:Name="menuProductos" FontSize="24" Header="Productos" Height="59" Width="176"/>
-            <MenuItem x:Name="menuTPV" FontSize="24" Header="TPV" Height="59" Width="113"/>
-            <MenuItem x:Name="menuInformes" FontSize="24" Header="Informes" Height="59" Width="140"/>
+        <Menu x:Name="menuTienda" HorizontalAlignment="Left" Height="59" Margin="0,10,0,0" VerticalAlignment="Top" Width="1192" TextOptions.TextFormattingMode="Display" Background="#FF1098AE" Grid.ColumnSpan="2" Foreground="White">
+            <MenuItem x:Name="menuInicio" FontSize="24" Header="Inicio" Height="59" Width="70" Background="#FF1B648D"/>
+            <MenuItem x:Name="menuUsuario" FontSize="24" Header="Usuarios" Height="59" Width="110"/>
+            <MenuItem x:Name="menuCliente" FontSize="24" Header="Clientes" Height="59" Width="100"/>
+            <MenuItem x:Name="menuProveedores" FontSize="24" Header="Provedores" Height="59" Width="140"/>
+            <MenuItem x:Name="menuCategoria" FontSize="24" Header="Categorías" Height="59" Width="130"/>
+            <MenuItem x:Name="menuProductos" FontSize="24" Header="Productos" Height="59" Width="130"/>
+            <MenuItem x:Name="menuTPV" FontSize="24" Header="TPV" Height="59" Width="70"/>
+            <MenuItem x:Name="menuInformes" FontSize="24" Header="Informes" Height="59" Width="120"/>
         </Menu>
-        <Frame x:Name="frameVentana" HorizontalAlignment="Left" Height="493" Margin="0,74,0,0" VerticalAlignment="Top" Width="1192" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden"/>
-        <Label x:Name="labelIdentidad" Content="Sin identificar" HorizontalAlignment="Left" Margin="412.5,572,0,0" VerticalAlignment="Top" FontSize="20" Grid.Column="1"/>
-        <Button x:Name="botonCerrarSesion" Content="Cerrar Sesión" HorizontalAlignment="Left" Height="36" Margin="887.5,573,0,0" VerticalAlignment="Top" Width="177" FontSize="20" Grid.Column="1" Click="BotonCerrarSesion_Click"/>
+        <Frame x:Name="frameVentana" HorizontalAlignment="Center" Height="493" Margin="0,74,0,0" VerticalAlignment="Top" Width="1192" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden"/>
+        <Label x:Name="lbl_usuario" Content="Sin identificar" HorizontalAlignment="Center" Margin="408,572,254,0" VerticalAlignment="Top" FontSize="20" Grid.Column="1" Width="412"/>
+        <Button x:Name="botonCerrarSesion" Content="Cerrar Sesión" HorizontalAlignment="Left" Height="36" Margin="890,573,0,0" VerticalAlignment="Top" Width="177" FontSize="20" Grid.Column="1" Click="BotonCerrarSesion_Click" IsEnabled="False"/>
     </Grid>
 </Window>

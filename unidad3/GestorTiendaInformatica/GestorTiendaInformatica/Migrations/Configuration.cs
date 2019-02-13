@@ -20,6 +20,8 @@ namespace GestorTiendaInformatica.Migrations
             admin.password = "abc123.";
             admin.user = "admin";
             admin.TipoCuenta = "Administrador";
+
+            context.Usuario.AddOrUpdate(admin);
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
