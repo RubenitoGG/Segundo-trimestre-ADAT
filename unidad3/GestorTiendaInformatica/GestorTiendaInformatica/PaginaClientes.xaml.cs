@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GestorTiendaInformatica.Model;
+using GestorTiendaInformatica.DAL;
 
 namespace GestorTiendaInformatica
 {
@@ -21,10 +23,14 @@ namespace GestorTiendaInformatica
     public partial class PaginaClientes : Page
     {
         Frame f;
+        UnitOfWork uow =  new UnitOfWork();
+        List<Cliente> listaClientes;
         public PaginaClientes(Frame f)
         {
             InitializeComponent();
             this.f = f;
+            listaClientes = uow.ClienteRepositorio.GetAll();
+            cb_clientes.ItemsSource = listaClientes;
         }
     }
 }

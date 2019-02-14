@@ -10,21 +10,29 @@
 
     <Grid Background="#FFCFCBCB" Margin="106,20,106,30">
         <Label Content="Gestión de usuarios" HorizontalAlignment="Center" Margin="0,25,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
-        <DataGrid HorizontalAlignment="Left" Height="138" Margin="43,75,0,0" VerticalAlignment="Top" Width="898"/>
-        <TextBox x:Name="txt_id" HorizontalAlignment="Left" Height="34" Margin="177,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="208" FontSize="14"/>
+        <DataGrid AutoGenerateColumns="false"  x:Name="dg_usuarios" HorizontalAlignment="Left" Height="138" Margin="43,75,0,0" VerticalAlignment="Top" Width="898" IsReadOnly="True" SelectionChanged="Dg_usuarios_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id Usuario" Binding="{Binding Path= UsuarioId}"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Path= Nombre}"/>
+                <DataGridTextColumn Header="Usuario" Binding="{Binding Path= user}"/>
+                <DataGridTextColumn Header="Contraseña" Binding="{Binding Path= password}"/>
+                <DataGridTextColumn Header="Tipo de Cuenta" Binding="{Binding Path= TipoCuenta}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox x:Name="txt_id" HorizontalAlignment="Left" Height="34" Margin="177,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="208" FontSize="14" IsReadOnly="True"/>
         <TextBox x:Name="txt_nombre" HorizontalAlignment="Left" Height="34" Margin="177,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="208" FontSize="14"/>
         <TextBox x:Name="txt_usuario" HorizontalAlignment="Left" Height="34" Margin="177,304,0,0" VerticalAlignment="Top" Width="208" FontSize="14"/>
-        <PasswordBox x:Name="txt_pass" HorizontalAlignment="Left" Height="34" Margin="177,344,0,0" VerticalAlignment="Top" Width="208" FontSize="14"/>
+        <TextBox x:Name="txt_pass" HorizontalAlignment="Left" Height="34" Margin="177,344,0,0" VerticalAlignment="Top" Width="208" FontSize="14"/>
         <Label Content="Nombre" HorizontalAlignment="Left" Margin="91,264,0,0" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="0.901,0.412"/>
         <Label Content="Usuario" HorizontalAlignment="Left" Margin="91,303,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label Content="ID Usuario" HorizontalAlignment="Left" Margin="81,226,0,0" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="0.901,0.412"/>
         <Label Content="Contraseña" HorizontalAlignment="Left" Margin="68,342,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label Content="Tipo Cuenta" HorizontalAlignment="Left" Margin="63,381,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <TextBox x:Name="txt_tipo" HorizontalAlignment="Left" Height="34" Margin="177,383,0,0" VerticalAlignment="Top" Width="208" FontSize="14"/>
-        <ComboBox x:Name="cb_tipo" HorizontalAlignment="Left" Margin="401,383,0,0" VerticalAlignment="Top" Width="158" Height="34"/>
+        <TextBox x:Name="txt_tipo" HorizontalAlignment="Left" Height="34" Margin="177,383,0,0" VerticalAlignment="Top" Width="208" FontSize="14" IsReadOnly="True"/>
+        <ComboBox x:Name="cb_tipo" HorizontalAlignment="Left" Margin="401,383,0,0" VerticalAlignment="Top" Width="158" Height="34" SelectionChanged="Cb_tipo_SelectionChanged"/>
         <Button x:Name="btn_limpiar" Content="Limpiar" HorizontalAlignment="Left" Margin="427,226,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647"/>
-        <Button x:Name="btn_eliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="518,226,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647"/>
-        <Button x:Name="btn_guardar" Content="Guardar" HorizontalAlignment="Left" Margin="609,226,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647"/>
+        <Button x:Name="btn_eliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="518,226,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647" Click="Btn_eliminar_Click"/>
+        <Button x:Name="btn_guardar" Content="Guardar" HorizontalAlignment="Left" Margin="609,226,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647" Click="Btn_guardar_Click"/>
         <PasswordBox x:Name="txt_buscar" HorizontalAlignment="Left" Height="34" Margin="715,226,0,0" VerticalAlignment="Top" Width="208" FontSize="14"/>
         <Button x:Name="btn_buscar" Content="Buscar" HorizontalAlignment="Left" Margin="848,277,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647"/>
     </Grid>
