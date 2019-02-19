@@ -25,12 +25,19 @@ namespace GestorTiendaInformatica
         Frame f;
         UnitOfWork uow =  new UnitOfWork();
         List<Cliente> listaClientes;
+        bool nuevo = true;
+
         public PaginaClientes(Frame f)
         {
             InitializeComponent();
             this.f = f;
             listaClientes = uow.ClienteRepositorio.GetAll();
             cb_clientes.ItemsSource = listaClientes;
+        }
+
+        private void Btn_limpiar_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

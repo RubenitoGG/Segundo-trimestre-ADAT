@@ -9,21 +9,28 @@
       Title="PaginaCategoria">
 
     <Grid Background="#FFCFCBCB" Margin="106,20,106,30">
-        <DataGrid HorizontalAlignment="Left" Height="138" Margin="43,75,0,0" VerticalAlignment="Top" Width="898"/>
-        <TextBox x:Name="txt_id" HorizontalAlignment="Left" Height="34" Margin="177,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="208" FontSize="14"/>
+        <DataGrid x:Name="dg_categorias" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="138" Margin="43,75,0,0" VerticalAlignment="Top" Width="898" IsReadOnly="True" SelectionChanged="Dg_categorias_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id Categoría" Binding="{Binding Path=CategoriaId}"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Path=Nombre}"/>
+                <DataGridTextColumn Header="Descripción" Binding="{Binding Path=Descripcion}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox x:Name="txt_id" IsReadOnly="True" HorizontalAlignment="Left" Height="34" Margin="177,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="208" FontSize="14"/>
         <TextBox x:Name="txt_nombre" HorizontalAlignment="Left" Height="34" Margin="177,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="208" FontSize="14"/>
         <TextBox x:Name="txt_descripcion" HorizontalAlignment="Left" Height="34" Margin="177,304,0,0" VerticalAlignment="Top" Width="208" FontSize="14"/>
         <Label Content="Nombre" HorizontalAlignment="Left" Margin="91,264,0,0" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="0.901,0.412"/>
         <Label Content="Descripción" HorizontalAlignment="Left" Margin="70,304,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label Content="ID Categoria" HorizontalAlignment="Left" Margin="65,226,0,0" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="0.901,0.412"/>
-        <Label Content="Foto" HorizontalAlignment="Left" Margin="114,338,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <Button x:Name="btn_limpiar" Content="Limpiar" HorizontalAlignment="Left" Margin="427,226,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647"/>
-        <Button x:Name="btn_eliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="518,226,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647"/>
-        <Button x:Name="btn_guardar" Content="Guardar" HorizontalAlignment="Left" Margin="609,226,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647"/>
+        <Label Content="Foto" HorizontalAlignment="Left" Margin="114,348,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Button x:Name="btn_limpiar" Content="Limpiar" HorizontalAlignment="Left" Margin="427,226,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647" Click="Btn_limpiar_Click"/>
+        <Button x:Name="btn_eliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="518,226,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647" Click="Btn_eliminar_Click"/>
+        <Button x:Name="btn_guardar" Content="Añadir" HorizontalAlignment="Left" Margin="609,226,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647" Click="Btn_guardar_Click"/>
         <PasswordBox x:Name="txt_buscar" HorizontalAlignment="Left" Height="34" Margin="715,226,0,0" VerticalAlignment="Top" Width="208" FontSize="14"/>
         <Button x:Name="btn_buscar" Content="Buscar" HorizontalAlignment="Left" Margin="848,277,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647"/>
         <Label Content="Gestión de Categorias" HorizontalAlignment="Center" Margin="0,25,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Width="234"/>
-        <Button x:Name="btn_subir" Content="Subir" HorizontalAlignment="Left" Margin="77,372,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647"/>
+        <Button x:Name="btn_subir" Content="Subir" HorizontalAlignment="Left" Margin="77,382,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="68" Margin="177,348,0,0" Stroke="Black" VerticalAlignment="Top" Width="70"/>
 
     </Grid>
 </Page>

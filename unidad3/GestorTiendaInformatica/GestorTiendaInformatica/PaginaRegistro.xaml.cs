@@ -61,6 +61,8 @@ namespace GestorTiendaInformatica
 
             // AÑADIR USUARIO:
             uow.UsuarioRepositorio.Añadir(u);
+            PaginaInicio pI = new PaginaInicio(f, new MainWindow());
+            f.Content = pI;
         }
     }
 }

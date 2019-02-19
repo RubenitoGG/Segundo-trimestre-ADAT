@@ -21,9 +21,9 @@
         <Label Content="Correo Electrónico" HorizontalAlignment="Left" Margin="12,337,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label Content="Dirección" HorizontalAlignment="Left" Margin="66,376,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox x:Name="txt_direccion" HorizontalAlignment="Left" Height="34" Margin="162,376,0,0" VerticalAlignment="Top" Width="208" FontSize="14"/>
-        <Button x:Name="btn_limpiar" Content="Limpiar" HorizontalAlignment="Left" Margin="408,219,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647"/>
+        <Button x:Name="btn_limpiar" Content="Limpiar" HorizontalAlignment="Left" Margin="408,219,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647" Click="Btn_limpiar_Click"/>
         <Button x:Name="btn_eliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="408,297,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647"/>
-        <Button x:Name="btn_guardar" Content="Guardar" HorizontalAlignment="Left" Margin="408,258,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647"/>
+        <Button x:Name="btn_guardar" Content="Añadir" HorizontalAlignment="Left" Margin="408,258,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647"/>
         <PasswordBox x:Name="txt_buscar" HorizontalAlignment="Left" Height="34" Margin="408,376,0,0" VerticalAlignment="Top" Width="208" FontSize="14"/>
         <Button x:Name="btn_buscar" Content="Buscar" HorizontalAlignment="Left" Margin="408,337,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647"/>
         <DataGrid x:Name="cb_compras" HorizontalAlignment="Left" Height="100" Margin="696,216,0,0" VerticalAlignment="Top" Width="245"/>

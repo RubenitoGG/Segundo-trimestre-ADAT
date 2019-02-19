@@ -24,6 +24,8 @@ namespace GestorTiendaInformatica
     {
         Frame f;
         UnitOfWork uow = new UnitOfWork();
+        Usuario usuario;
+        bool nuevo = true;
         public PaginaUsuarios(Frame f)
         {
             InitializeComponent();
@@ -38,14 +40,21 @@ namespace GestorTiendaInformatica
 
         private void Dg_usuarios_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Usuario u = (Usuario)dg_usuarios.SelectedItem;
-            txt_id.Text = u.UsuarioId.ToString();
-            txt_nombre.Text = u.Nombre;
-            txt_usuario.Text = u.user;
-            txt_pass.Text = u.password;
-            txt_tipo.Text = u.TipoCuenta;
+            this.usuario = (Usuario)dg_usuarios.SelectedItem;
+            this.nuevo = false;
+            btn_guardar.Content = "Actualizar";
 
-            cb_tipo.SelectedItem = "";
+            if (this.usuario != null)
+            {
+                txt_id.Text = this.usuario.UsuarioId.ToString();
+                txt_nombre.Text = this.usuario.Nombre;
+                txt_usuario.Text = this.usuario.user;
+                txt_pass.Text = this.usuario.password;
+                txt_tipo.Text = this.usuario.TipoCuenta;
+
+                cb_tipo.SelectedItem = "";
+            }
+
         }
 
         private void Cb_tipo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -55,25 +64,68 @@ namespace GestorTiendaInformatica
 
         private void Btn_guardar_Click(object sender, RoutedEventArgs e)
         {
-            Usuario u = new Usuario
+            if (!nuevo) // ACTUALIZAR USUARIO:
             {
-                UsuarioId = Convert.ToInt32(txt_id.Text),
-                Nombre = txt_nombre.Text,
-                user = txt_usuario.Text,
-                password = txt_pass.Text,
-                TipoCuenta = txt_tipo.Text
-            };
 
-            uow.UsuarioRepositorio.Update(u);
+                this.usuario.UsuarioId = Convert.ToInt32(txt_id.Text);
+                this.usuario.Nombre = txt_nombre.Text;
+                this.usuario.user = txt_usuario.Text;
+                this.usuario.password = txt_pass.Text;
+                this.usuario.TipoCuenta = txt_tipo.Text;
+                this.usuario.Ventas = this.usuario.Ventas;
+
+                uow.UsuarioRepositorio.Update(usuario);
+            }
+            else // AÑADIR NUEVO USUARIO:
+            {
+                // COMPROBACIONES:
+
+                Usuario u = new Usuario
+                {
+                    Nombre = txt_nombre.Text,
+                    user = txt_usuario.Text,
+                    password = txt_pass.Text,
+                    TipoCuenta = txt_tipo.Text
+                };
+                uow.UsuarioRepositorio.Añadir(u);
+            }
+
+            // ACTUALIZAR DATAGRID:
+            BorrarCampos();
+            dg_usuarios.ItemsSource = "";
+            dg_usuarios.ItemsSource = uow.UsuarioRepositorio.GetAll();
+            dg_usuarios.Items.Refresh();
         }
 
         private void Btn_eliminar_Click(object sender, RoutedEventArgs e)
         {
-            Usuario u = (Usuario)dg_usuarios.SelectedItem;
-            uow.UsuarioRepositorio.Delete(u);
-            dg_usuarios.ItemsSource = null;
+            this.usuario = (Usuario)dg_usuarios.SelectedItem;
+            uow.UsuarioRepositorio.Delete(this.usuario);
+            this.usuario = null;
+            BorrarCampos();
+            dg_usuarios.ItemsSource = "";
             dg_usuarios.ItemsSource = uow.UsuarioRepositorio.GetAll();
-            dg_usuarios.Items.Refresh();
+        }
+
+        private void BorrarCampos()
+        {
+            txt_id.Text = "";
+            txt_nombre.Text = "";
+            txt_pass.Text = "";
+            txt_tipo.Text = "";
+            txt_usuario.Text = "";
+        }
+
+        private void Btn_añadir_Click(object sender, RoutedEventArgs e)
+        {
+            nuevo = true;
+            btn_guardar.Content = "Añadir";
+            BorrarCampos();
+        }
+
+        private void Btn_buscar_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

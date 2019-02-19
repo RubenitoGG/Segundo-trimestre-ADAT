@@ -10,8 +10,16 @@
 
     <Grid Background="#FFCFCBCB" Margin="106,20,106,30">
         <Label Content="Gestión de productos" HorizontalAlignment="Center" Margin="384,18,384,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Width="212"/>
-        <DataGrid x:Name="cb_productos" HorizontalAlignment="Left" Height="138" Margin="43,68,0,0" VerticalAlignment="Top" Width="898"/>
-        <TextBox x:Name="txt_id" HorizontalAlignment="Left" Height="34" Margin="177,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="208" FontSize="14"/>
+        <DataGrid x:Name="dg_productos" HorizontalAlignment="Left" Height="138" Margin="43,68,0,0" VerticalAlignment="Top" Width="898" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="Dg_productos_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id Producto" Binding="{Binding Path= ProductoId}"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Path= Nombre}"/>
+                <DataGridTextColumn Header="Precio" Binding="{Binding Path= Precio}"/>
+                <DataGridTextColumn Header="Stock" Binding="{Binding Path= Stock}"/>
+                <DataGridTextColumn Header="Descripción" Binding="{Binding Path= Descripcion}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox x:Name="txt_id" HorizontalAlignment="Left" Height="34" Margin="177,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="208" FontSize="14" IsReadOnly="True"/>
         <TextBox x:Name="txt_nombre" HorizontalAlignment="Left" Height="34" Margin="177,258,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="208" FontSize="14"/>
         <TextBox x:Name="txt_descripcion" HorizontalAlignment="Left" Height="34" Margin="177,297,0,0" VerticalAlignment="Top" Width="208" FontSize="14"/>
         <TextBox x:Name="txt_precio" HorizontalAlignment="Left" Height="34" Margin="177,337,0,0" VerticalAlignment="Top" Width="208" FontSize="14"/>
@@ -22,15 +30,15 @@
         <Label Content="Stock" HorizontalAlignment="Left" Margin="104,377,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox x:Name="txt_stock" HorizontalAlignment="Left" Height="34" Margin="177,376,0,0" VerticalAlignment="Top" Width="208" FontSize="14"/>
         <ComboBox x:Name="cb_categoria" HorizontalAlignment="Left" Margin="772,220,0,0" VerticalAlignment="Top" Width="169" Height="34"/>
-        <Button x:Name="btn_limpiar" Content="Limpiar" HorizontalAlignment="Left" Margin="871,306,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647"/>
-        <Button x:Name="btn_eliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="871,394,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647"/>
-        <Button x:Name="btn_guardar" Content="Guardar" HorizontalAlignment="Left" Margin="871,349,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647"/>
+        <Button x:Name="btn_limpiar" Content="Limpiar" HorizontalAlignment="Left" Margin="871,306,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647" Click="Btn_limpiar_Click"/>
+        <Button x:Name="btn_eliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="871,394,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647" Click="Btn_eliminar_Click" IsEnabled="False"/>
+        <Button x:Name="btn_guardar" Content="Añadir" HorizontalAlignment="Left" Margin="871,349,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647" Click="Btn_guardar_Click"/>
         <PasswordBox x:Name="txt_buscar" HorizontalAlignment="Left" Height="34" Margin="481,394,0,0" VerticalAlignment="Top" Width="286" FontSize="14"/>
         <Button x:Name="btn_buscar" Content="Buscar" HorizontalAlignment="Left" Margin="772,394,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647"/>
         <Button x:Name="btn_subir" Content="Subir" HorizontalAlignment="Left" Margin="576,355,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647"/>
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="90" Margin="481,299,0,0" Stroke="Black" VerticalAlignment="Top" Width="90"/>
-        <TextBox x:Name="txt_categoria" HorizontalAlignment="Left" Height="34" Margin="481,219,0,0" VerticalAlignment="Top" Width="286" FontSize="14"/>
-        <TextBox x:Name="txt_proveedor" HorizontalAlignment="Left" Height="34" Margin="481,259,0,0" VerticalAlignment="Top" Width="286" FontSize="14"/>
+        <TextBox x:Name="txt_categoria" HorizontalAlignment="Left" Height="34" Margin="481,219,0,0" VerticalAlignment="Top" Width="286" FontSize="14" IsReadOnly="True"/>
+        <TextBox x:Name="txt_proveedor" HorizontalAlignment="Left" Height="34" Margin="481,259,0,0" VerticalAlignment="Top" Width="286" FontSize="14" IsReadOnly="True"/>
         <Label Content="Categoria" HorizontalAlignment="Left" Margin="397,220,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label Content="Proveedor" HorizontalAlignment="Left" Margin="393,262,0,0" VerticalAlignment="Top" FontSize="14"/>
         <ComboBox x:Name="cb_proveedor" HorizontalAlignment="Left" Margin="772,259,0,0" VerticalAlignment="Top" Width="169" Height="34"/>

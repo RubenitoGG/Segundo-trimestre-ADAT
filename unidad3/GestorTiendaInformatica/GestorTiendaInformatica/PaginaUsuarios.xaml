@@ -30,10 +30,10 @@
         <Label Content="Tipo Cuenta" HorizontalAlignment="Left" Margin="63,381,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox x:Name="txt_tipo" HorizontalAlignment="Left" Height="34" Margin="177,383,0,0" VerticalAlignment="Top" Width="208" FontSize="14" IsReadOnly="True"/>
         <ComboBox x:Name="cb_tipo" HorizontalAlignment="Left" Margin="401,383,0,0" VerticalAlignment="Top" Width="158" Height="34" SelectionChanged="Cb_tipo_SelectionChanged"/>
-        <Button x:Name="btn_limpiar" Content="Limpiar" HorizontalAlignment="Left" Margin="427,226,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647"/>
+        <Button x:Name="btn_añadir" Content="Limpiar" HorizontalAlignment="Left" Margin="427,226,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647" Click="Btn_añadir_Click"/>
         <Button x:Name="btn_eliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="518,226,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647" Click="Btn_eliminar_Click"/>
-        <Button x:Name="btn_guardar" Content="Guardar" HorizontalAlignment="Left" Margin="609,226,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647" Click="Btn_guardar_Click"/>
+        <Button x:Name="btn_guardar" Content="Añadir" HorizontalAlignment="Left" Margin="609,226,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647" Click="Btn_guardar_Click"/>
         <PasswordBox x:Name="txt_buscar" HorizontalAlignment="Left" Height="34" Margin="715,226,0,0" VerticalAlignment="Top" Width="208" FontSize="14"/>
-        <Button x:Name="btn_buscar" Content="Buscar" HorizontalAlignment="Left" Margin="848,277,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647"/>
+        <Button x:Name="btn_buscar" Content="Buscar" HorizontalAlignment="Left" Margin="848,277,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647" Click="Btn_buscar_Click"/>
     </Grid>
 </Page>
