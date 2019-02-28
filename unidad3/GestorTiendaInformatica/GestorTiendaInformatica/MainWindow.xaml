@@ -18,7 +18,7 @@
             <MenuItem x:Name="menuProveedores" FontSize="24" Header="Provedores" Height="59" Width="140" Background="#FF1098AE" Click="MenuProveedores_Click"/>
             <MenuItem x:Name="menuCategoria" FontSize="24" Header="Categorías" Height="59" Width="130" Background="#FF1098AE" Click="MenuCategoria_Click"/>
             <MenuItem x:Name="menuProductos" FontSize="24" Header="Productos" Height="59" Width="130" Background="#FF1098AE" Click="MenuProductos_Click"/>
-            <MenuItem x:Name="menuTPV" FontSize="24" Header="TPV" Height="59" Width="70" Background="#FF1098AE"/>
+            <MenuItem x:Name="menuTPV" FontSize="24" Header="TPV" Height="59" Width="70" Background="#FF1098AE" Click="MenuTPV_Click"/>
             <MenuItem x:Name="menuInformes" FontSize="24" Header="Informes" Height="59" Width="120" Background="#FF1098AE" Click="MenuInformes_Click"/>
         </Menu>
         <Frame x:Name="frameVentana" HorizontalAlignment="Center" Height="493" Margin="0,74,0,0" VerticalAlignment="Top" Width="1192" Grid.ColumnSpan="2" NavigationUIVisibility="Hidden"/>

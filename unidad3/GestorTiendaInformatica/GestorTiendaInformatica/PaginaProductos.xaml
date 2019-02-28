@@ -16,6 +16,7 @@
                 <DataGridTextColumn Header="Nombre" Binding="{Binding Path= Nombre}"/>
                 <DataGridTextColumn Header="Precio" Binding="{Binding Path= Precio}"/>
                 <DataGridTextColumn Header="Stock" Binding="{Binding Path= Stock}"/>
+                <DataGridTextColumn Header="Categoría" Binding="{Binding Path= Categoria.Nombre}"/>
                 <DataGridTextColumn Header="Descripción" Binding="{Binding Path= Descripcion}"/>
             </DataGrid.Columns>
         </DataGrid>

@@ -96,6 +96,10 @@
     <Compile Include="Migrations\201902061011577_productoes.Designer.cs">
       <DependentUpon>201902061011577_productoes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902280812026_largo.cs" />
+    <Compile Include="Migrations\201902280812026_largo.Designer.cs">
+      <DependentUpon>201902280812026_largo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PaginaCategoria.xaml.cs">
       <DependentUpon>PaginaCategoria.xaml</DependentUpon>
@@ -117,6 +121,9 @@
     </Compile>
     <Compile Include="PaginaRegistro.xaml.cs">
       <DependentUpon>PaginaRegistro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PaginaTPV.xaml.cs">
+      <DependentUpon>PaginaTPV.xaml</DependentUpon>
     </Compile>
     <Compile Include="PaginaUsuarios.xaml.cs">
       <DependentUpon>PaginaUsuarios.xaml</DependentUpon>
@@ -166,6 +173,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PaginaTPV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PaginaUsuarios.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -201,6 +212,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902061011577_productoes.resx">
       <DependentUpon>201902061011577_productoes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902280812026_largo.resx">
+      <DependentUpon>201902280812026_largo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

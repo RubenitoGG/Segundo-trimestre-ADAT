@@ -22,19 +22,36 @@ namespace GestorTiendaInformatica
     /// </summary>
     public partial class PaginaProductos : Page
     {
-        Frame f;
         UnitOfWork uow = new UnitOfWork();
         Producto p;
         bool nuevo = true;
+
+        List<Categoria> categorias;
+
         public PaginaProductos(Frame f)
         {
             InitializeComponent();
-            this.f = f;
             dg_productos.ItemsSource = uow.ProductoRepositorio.GetAll();
+            categorias = uow.CategoriaRepositorio.GetAll();
+            foreach (Categoria c in categorias)
+            {
+                cb_categoria.Items.Add(c.Nombre);
+            }
         }
 
         private void Btn_guardar_Click(object sender, RoutedEventArgs e)
         {
+            Categoria c =  new Categoria();
+
+            // BUSCAR CATEGORÍA
+            foreach (Categoria categoria in categorias)
+            {
+                if (categoria.Nombre == cb_categoria.SelectedItem.ToString())
+                {
+                    c = categoria;
+                }
+            }
+
             if (nuevo) // AÑADIR PRODUCTO:
             {
                 p = new Producto();
@@ -42,6 +59,7 @@ namespace GestorTiendaInformatica
                 p.Descripcion = txt_descripcion.Text;
                 p.Precio = Convert.ToDouble(txt_precio.Text);
                 p.Stock = Convert.ToInt32(txt_stock.Text);
+                p.Categoria = c;
                 p.Imagen = "imagen";
 
                 uow.ProductoRepositorio.Añadir(p);
@@ -53,6 +71,7 @@ namespace GestorTiendaInformatica
                 p.Descripcion = txt_descripcion.Text;
                 p.Precio = Convert.ToDouble(txt_precio.Text);
                 p.Stock = Convert.ToInt32(txt_stock.Text);
+                p.Categoria = c;
                 p.Imagen = "imagen";
 
                 uow.ProductoRepositorio.Update(p);
@@ -61,7 +80,6 @@ namespace GestorTiendaInformatica
             BorrarCampos();
             dg_productos.ItemsSource = "";
             dg_productos.ItemsSource = uow.ProductoRepositorio.GetAll();
-            dg_productos.Items.Refresh();
 
             nuevo = true;
             btn_guardar.Content = "Añadir";
@@ -111,8 +129,6 @@ namespace GestorTiendaInformatica
             BorrarCampos();
             dg_productos.ItemsSource = "";
             dg_productos.ItemsSource = uow.ProductoRepositorio.GetAll();
-            dg_productos.Items.Refresh();
-
         }
     }
 }

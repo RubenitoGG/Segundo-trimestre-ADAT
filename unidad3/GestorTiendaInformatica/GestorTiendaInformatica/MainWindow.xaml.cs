@@ -157,5 +157,16 @@ namespace GestorTiendaInformatica
             else
                 MessageBox.Show("Necesitas iniciar sesión antes de nada", "", MessageBoxButton.OK, MessageBoxImage.Error);
         }
+
+        private void MenuTPV_Click(object sender, RoutedEventArgs e)
+        {
+            if (moverte)
+            {
+                PaginaTPV pT = new PaginaTPV();
+                frameVentana.Content = pT;
+                QuitarColor();
+                menuTPV.Background = new SolidColorBrush(actual);
+            }
+        }
     }
 }

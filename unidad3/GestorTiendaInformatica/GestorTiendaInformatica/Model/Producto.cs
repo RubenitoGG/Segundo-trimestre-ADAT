@@ -14,11 +14,11 @@ namespace GestorTiendaInformatica.Model
         public int ProductoId { get; set; }
 
         [Required(ErrorMessage = "Nombre obligatorio.")]
-        [StringLength(20, MinimumLength = 2)]
+        [StringLength(50, MinimumLength = 2)]
         public string Nombre { get; set; }
 
         [Required(ErrorMessage = "Descripción obligatoria.")]
-        [StringLength(100, MinimumLength = 0)]
+        [StringLength(150, MinimumLength = 0)]
         public string Descripcion { get; set; }
 
         [Required(ErrorMessage = "Imagen obligatoria.")]
