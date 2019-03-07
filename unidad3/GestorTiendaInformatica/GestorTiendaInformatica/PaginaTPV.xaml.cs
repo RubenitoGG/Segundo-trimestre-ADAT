@@ -24,9 +24,12 @@ namespace GestorTiendaInformatica
     {
         UnitOfWork uow = new UnitOfWork();
         List<Categoria> categorias;
-        public PaginaTPV()
+        string nombre;
+        public PaginaTPV(string nombre)
         {
             InitializeComponent();
+            this.nombre = nombre;
+
             // AÑADIR UN BOTÓN POR CADA CATEGORÍA:
             categorias = uow.CategoriaRepositorio.GetAll();
             foreach (Categoria categoria in categorias)
@@ -69,6 +72,11 @@ namespace GestorTiendaInformatica
             }
 
             lb_productos.ItemsSource = elegidos;
+            BorrarLabel();
+        }
+
+        private void BorrarLabel()
+        {
             txt_nombre.Text = "--";
             txt_precio.Text = "--";
             txt_stock.Text = "--";
@@ -140,6 +148,32 @@ namespace GestorTiendaInformatica
             dg_ticket.ItemsSource = "";
             cantidad = 0;
             txt_total.Text = cantidad.ToString();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            // COMPROBAR Y QUITAR STOCK:
+            foreach (Producto producto in p)
+            {
+                if (producto.Stock > 0)
+                {
+                    producto.Stock = producto.Stock - 1;
+                    uow.ProductoRepositorio.Update(producto);
+                    BorrarLabel();
+                    dg_ticket.ItemsSource = "";
+                    lb_productos.SelectedItem = null;
+                }
+                else
+                {
+                    MessageBox.Show("No hay suficiente stock de " + producto.Nombre + ".", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+            }
+
+            // GENERAR FACTURA:
+           
+            Factura newVentana = new Factura(p, nombre);
+            newVentana.Show();
         }
     }
 }

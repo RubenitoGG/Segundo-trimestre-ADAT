@@ -1,0 +1,24 @@
+﻿<Window x:Class="GestorTiendaInformatica.Factura"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GestorTiendaInformatica"
+        mc:Ignorable="d"
+        Title="Ticket" Height="450" Width="363.157">
+    <Grid>
+        <DataGrid x:Name="dg_productos" HorizontalAlignment="Left" Height="281" Margin="10,10,0,0" VerticalAlignment="Top" Width="335" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Width="50" Binding="{Binding Path= ProductoId}"/>
+                <DataGridTextColumn Header="Nombre" Width="150" Binding="{Binding Path= Nombre}"/>
+                <DataGridTextColumn Header="Precio" Width="70" Binding="{Binding Path= Precio}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Total:" HorizontalAlignment="Left" Margin="15,309,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label x:Name="lbl_precio" Content="0 €" HorizontalAlignment="Left" Margin="62,309,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.665,0.238"/>
+        <Label Content="Gracias por su visita" HorizontalAlignment="Left" Margin="111,383,0,0" VerticalAlignment="Top"/>
+        <Label Content="Le atendió:" HorizontalAlignment="Left" Margin="15,336,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label x:Name="lbl_nombre" Content="Administrador" HorizontalAlignment="Left" Margin="102,336,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.665,0.238"/>
+
+    </Grid>
+</Window>

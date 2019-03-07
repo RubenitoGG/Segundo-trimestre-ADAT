@@ -84,6 +84,9 @@
     <Compile Include="DAL\UnitOfWork.cs" />
     <Compile Include="DAL\UsuarioRepositorio.cs" />
     <Compile Include="DAL\VentaRepositorio.cs" />
+    <Compile Include="Factura.xaml.cs">
+      <DependentUpon>Factura.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201901300959518_start.cs" />
     <Compile Include="Migrations\201901300959518_start.Designer.cs">
       <DependentUpon>201901300959518_start.cs</DependentUpon>
@@ -133,6 +136,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TiendaInformaticaDataSet.xsd</DependentUpon>
     </Compile>
+    <Page Include="Factura.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -31,9 +31,9 @@
         <Label Content="Stock" HorizontalAlignment="Left" Margin="104,377,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox x:Name="txt_stock" HorizontalAlignment="Left" Height="34" Margin="177,376,0,0" VerticalAlignment="Top" Width="208" FontSize="14"/>
         <ComboBox x:Name="cb_categoria" HorizontalAlignment="Left" Margin="772,220,0,0" VerticalAlignment="Top" Width="169" Height="34"/>
-        <Button x:Name="btn_limpiar" Content="Limpiar" HorizontalAlignment="Left" Margin="871,306,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647" Click="Btn_limpiar_Click"/>
-        <Button x:Name="btn_eliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="871,394,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647" Click="Btn_eliminar_Click" IsEnabled="False"/>
-        <Button x:Name="btn_guardar" Content="Añadir" HorizontalAlignment="Left" Margin="871,349,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647" Click="Btn_guardar_Click"/>
+        <Button x:Name="btn_limpiar" Content="Limpiar" HorizontalAlignment="Left" Margin="861,306,0,0" VerticalAlignment="Top" Width="99" Height="34" RenderTransformOrigin="-0.178,0.647" Click="Btn_limpiar_Click"/>
+        <Button x:Name="btn_eliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="861,394,0,0" VerticalAlignment="Top" Width="99" Height="34" RenderTransformOrigin="-0.178,0.647" Click="Btn_eliminar_Click" IsEnabled="False"/>
+        <Button x:Name="btn_guardar" Content="Añadir" HorizontalAlignment="Left" Margin="861,349,0,0" VerticalAlignment="Top" Width="99" Height="34" RenderTransformOrigin="-0.178,0.647" Click="Btn_guardar_Click"/>
         <PasswordBox x:Name="txt_buscar" HorizontalAlignment="Left" Height="34" Margin="481,394,0,0" VerticalAlignment="Top" Width="286" FontSize="14"/>
         <Button x:Name="btn_buscar" Content="Buscar" HorizontalAlignment="Left" Margin="772,394,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647"/>
         <Button x:Name="btn_subir" Content="Subir" HorizontalAlignment="Left" Margin="576,355,0,0" VerticalAlignment="Top" Width="75" Height="34" RenderTransformOrigin="-0.178,0.647"/>

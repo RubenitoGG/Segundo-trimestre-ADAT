@@ -15,12 +15,12 @@
         <TextBox x:Name="txt_nombre" HorizontalAlignment="Left" Height="34" Margin="881,427,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="173" FontSize="14"/>
         <Label Content="Recaudación" HorizontalAlignment="Left" Margin="771,427,0,0" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="0.901,0.412"/>
         <Label Content="Ventas" HorizontalAlignment="Left" Margin="474,426,0,0" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="0.901,0.412"/>
-        <Label Content="Ver informe entre dos fechas" HorizontalAlignment="Left" Margin="93,315,0,0" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="0.901,0.412"/>
-        <DatePicker HorizontalAlignment="Left" Margin="67,349,0,0" VerticalAlignment="Top" Width="155" RenderTransformOrigin="1.436,-0.072" Height="24"/>
-        <DatePicker HorizontalAlignment="Left" Margin="67,383,0,0" VerticalAlignment="Top" Width="155" RenderTransformOrigin="1.436,-0.072" Height="24"/>
-        <Label Content="Fecha inicial" HorizontalAlignment="Left" Margin="227,346,0,0" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="0.901,0.412"/>
-        <Label Content="Fecha final" HorizontalAlignment="Left" Margin="227,380,0,0" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="0.901,0.412"/>
-        <Calendar HorizontalAlignment="Left" Margin="62,65,0,0" VerticalAlignment="Top" Height="250" Width="250"/>
+        <Label Content="Ver informe entre dos fechas" HorizontalAlignment="Left" Margin="95,361,0,0" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="0.901,0.412"/>
+        <DatePicker HorizontalAlignment="Left" Margin="69,395,0,0" VerticalAlignment="Top" Width="155" RenderTransformOrigin="1.436,-0.072" Height="24"/>
+        <DatePicker HorizontalAlignment="Left" Margin="69,429,0,0" VerticalAlignment="Top" Width="155" RenderTransformOrigin="1.436,-0.072" Height="24"/>
+        <Label Content="Fecha inicial" HorizontalAlignment="Left" Margin="229,392,0,0" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="0.901,0.412"/>
+        <Label Content="Fecha final" HorizontalAlignment="Left" Margin="229,426,0,0" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="0.901,0.412"/>
+        <Calendar HorizontalAlignment="Left" Margin="48,19,0,0" VerticalAlignment="Top" Height="318" Width="287"/>
 
     </Grid>
 </Page>

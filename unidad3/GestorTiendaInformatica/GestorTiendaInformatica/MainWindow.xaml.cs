@@ -162,7 +162,7 @@ namespace GestorTiendaInformatica
         {
             if (moverte)
             {
-                PaginaTPV pT = new PaginaTPV();
+                PaginaTPV pT = new PaginaTPV(us.Nombre);
                 frameVentana.Content = pT;
                 QuitarColor();
                 menuTPV.Background = new SolidColorBrush(actual);
