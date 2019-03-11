@@ -51,6 +51,7 @@ namespace GestorTiendaInformatica.DAL
                 return lineaVentaRepositorio;
             }
         }
+
         public ProductoRepositorio ProductoRepositorio
         {
             get
@@ -61,6 +62,7 @@ namespace GestorTiendaInformatica.DAL
                 return productoRepositorio;
             }
         }
+
         public ProveedorRepositorio ProveedorRepositorio
         {
             get
