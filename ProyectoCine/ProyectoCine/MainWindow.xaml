@@ -1,0 +1,1034 @@
+﻿<Window x:Class="ProyectoCine.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
+        xmlns:local="clr-namespace:ProyectoCine"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Cine Aurea" Height="800" MinHeight="800" Width="1000" MinWidth="1000"  IsEnabledChanged="Window_IsEnabledChanged" WindowStartupLocation="CenterScreen"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto" Closing="Window_Closing" Icon="imagenes/inicio/cineauracolor.png" ShowInTaskbar="False">
+
+    <Grid>
+        <DockPanel Name="dckpGestionCine" LastChildFill="True" IsEnabled="True" Visibility="Visible">
+            <materialDesign:ColorZone Padding="20" materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                                            Mode="PrimaryDark" DockPanel.Dock="Top">
+                <DockPanel>
+                    <materialDesign:PopupBox DockPanel.Dock="Right" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
+                        <StackPanel>
+                            <Button Content="Cerrar sesión" Click="CerrarSesion_Click"/>
+                            <Separator/>
+                            <Button Content="Cerrar Aplicación" Click="CerrarAplicacion_Click"/>
+                        </StackPanel>
+                    </materialDesign:PopupBox>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"  FontSize="22">CINE AUREA</TextBlock>
+                </DockPanel>
+            </materialDesign:ColorZone>
+            <StatusBar Name="statbarEmpleado" DockPanel.Dock="Bottom"></StatusBar>
+            <dragablz:TabablzControl Name="tbcPrincipal" SelectionChanged="tbcPrincipal_SelectionChanged">
+                <dragablz:TabablzControl.InterTabController>
+                    <dragablz:InterTabController />
+                </dragablz:TabablzControl.InterTabController>
+                <TabItem Name="tbEmpleados" Header="Empleados">
+                    <DockPanel Name="dckpEmpleados" LastChildFill="True">
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Right" Margin="16,10">
+                            <ComboBox Name="cbxBuscarEmpleado" materialDesign:HintAssist.Hint="Buscar por" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="5,0" MinWidth="150" IsEditable="False" TabIndex="0">
+                                <ComboBoxItem Content="Código"/>
+                                <ComboBoxItem Content="Usuario"/>
+                                <ComboBoxItem Content="NIF"/>
+                                <ComboBoxItem Content="Teléfono"/>
+                                <ComboBoxItem Content="Email"/>
+                            </ComboBox>
+                            <TextBox Name="txtBuscarEmpleado" materialDesign:HintAssist.Hint="Dato" MinHeight="25"  MinWidth="200" MaxWidth="200" Margin="5,0" TabIndex="1"/>
+                            <Button Name="btnBuscarEmpleado" Margin="5,0" Click="btnBuscarEmpleado_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/search.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnLimpiarEmpleado" Click="btnLimpiarEmpleado_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/clear.png" MaxHeight="25"/>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Center" Margin="16,10">
+                            <Button Name="btnAñadirEmpleado" Margin="10,0,10,0" Click="btnAñadirEmpleado_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/save.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnModificarEmpleado" Margin="10,0,10,0" Click="btnModificarEmpleado_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/edit.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnEliminarEmpleado"  Margin="10,0,10,0" Click="btnEliminarEmpleado_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/delete.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnListaEmpleados" Grid.Column="3" Margin="10,0" Click="btnListaEmpleados_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/list.png" MaxHeight="25"/>
+                            </Button>
+                        </StackPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <GroupBox Header="Datos Personales" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="0" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Name="txtNombreEmpleado" materialDesign:HintAssist.Hint="Nombre" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="0" Grid.Column="0" Margin="10,0" Text="{Binding Path=nombre, Mode=TwoWay}" VerticalAlignment="Center" TabIndex="0"/>
+                                    <TextBox Name="txtApellidoEmpleado" materialDesign:HintAssist.Hint="Apellidos" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="0" Grid.Column="1" Margin="10,0" Text="{Binding Path=apellidos, Mode=TwoWay}" VerticalAlignment="Center" TabIndex="1"/>
+                                    <TextBox Name="txtNifEmpleado" materialDesign:HintAssist.Hint="NIF" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="1" Grid.Column="0" Margin="10,0" Text="{Binding Path=nif, Mode=TwoWay}" VerticalAlignment="Center" MaxLength="9" TabIndex="2"/>
+                                    <TextBox Name="txtTelefonoEmpleado" materialDesign:HintAssist.Hint="Teléfono" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="1" Grid.Column="1" Margin="10,0" Text="{Binding Path=telefono, Mode=TwoWay}" VerticalAlignment="Center" MaxLength="9" TabIndex="3"/>
+                                    <TextBox Name="txtCorreoEmpleado" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="2" Grid.Column="0" Margin="10,0" Text="{Binding Path=correo, Mode=TwoWay}" VerticalAlignment="Center" TabIndex="4"/>
+                                    <TextBox Name="txtDireccionEmpleado" materialDesign:HintAssist.Hint="Dirección" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="2" Grid.Column="1" Margin="10,0" Text="{Binding Path=direccion,Mode=TwoWay}"  VerticalAlignment="Center" TabIndex="5"/>
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox Header="Datos de Empleado" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="1" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox materialDesign:HintAssist.Hint="Código" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="txtCodigoEmpleado" Grid.Row="0" Grid.Column="0" Text="{Binding Path=CodigoEmpleado, Mode=OneWay}" VerticalAlignment="Center" Margin="10,0" TabIndex="0"/>
+                                    <ComboBox Name="cmbRangoEmpleado" materialDesign:HintAssist.Hint="Rango" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Grid.Row="0" Grid.Column="1" Text="{Binding Path=rango,Mode=TwoWay}" VerticalAlignment="Center" SelectedIndex="0" IsEditable="False" Margin="10,0" TabIndex="1">
+                                        <ComboBoxItem Content="Super Administrador"/>
+                                        <ComboBoxItem Content="Administrador departamento comestibles"/>
+                                        <ComboBoxItem Content="Administrador departamento cine"/>
+                                        <ComboBoxItem Content="Empleado tienda comestibles"/>
+                                        <ComboBoxItem Content="Empleado tienda cine"/>
+                                    </ComboBox>
+                                    <TextBox Name="txtUsuarioEmpleado" materialDesign:HintAssist.Hint="Usuario" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="1" Grid.Column="0" Margin="10,0" Text="{Binding Path=usuario, Mode=TwoWay}" VerticalAlignment="Center" TabIndex="2"/>
+                                    <PasswordBox Name="pswContrasenaEmpleado" materialDesign:HintAssist.Hint="Contraseña" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Grid.Row="1" Grid.Column="1" Margin="10,0" Password="" VerticalAlignment="Center" MaxLength="16" TabIndex="3"/>
+                                    <DatePicker  materialDesign:HintAssist.Hint="Fecha de alta" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"  Name="dtpkFechaDeAlta" Grid.Row="2" Grid.Column="0" Margin="10,0" Text="{Binding Path=fechaAlta, Mode=TwoWay}" VerticalAlignment="Center" TabIndex="4"/>
+                                </Grid>
+                            </GroupBox>
+                        </Grid>
+                    </DockPanel>
+                </TabItem>
+                <TabItem Name="tbClientes" Header="Clientes">
+                    <DockPanel Name="dckpClientes" LastChildFill="True">
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Right" Margin="16,10">
+                            <ComboBox Name="cbxBuscarCliente" materialDesign:HintAssist.Hint="Buscar por" Style="{StaticResource MaterialDesignFloatingHintComboBox}"  Margin="5,0" MinWidth="150" IsEditable="False" TabIndex="0">
+                                <ComboBoxItem Content="Id"/>
+                                <ComboBoxItem Content="NIF"/>
+                                <ComboBoxItem Content="Teléfono"/>
+                                <ComboBoxItem Content="Email"/>
+                            </ComboBox>
+                            <TextBox Name="txtBuscarClientes" materialDesign:HintAssist.Hint="Dato" MinHeight="25"  MinWidth="200" MaxWidth="200" Margin="5,0" TabIndex="1"/>
+                            <Button Name="btnBuscarClientes" Margin="5,0" Click="btnBuscarClientes_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/search.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnLimpiarClientes" Click="btnLimpiarClientes_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/clear.png" MaxHeight="25"/>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Center" Margin="16,10">
+                            <Button Name="btnAñadirCliente" Margin="10,0,10,0" Click="btnAñadirCliente_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/save.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnModificarCliente" Margin="10,0,10,0" Click="btnModificarCliente_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/edit.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnEliminarCliente"  Margin="10,0,10,0" Click="btnEliminarCliente_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/delete.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnListaClientes" Margin="10,0" Click="btnListaClientes_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/list.png" MaxHeight="25"/>
+                            </Button>
+                        </StackPanel>
+                        <GroupBox Header="Datos de Cliente" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="0" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox Name="txtNombreCliente" materialDesign:HintAssist.Hint="Nombre" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="0" Grid.Column="0" Margin="10,0" Text="{Binding Path=nombre,Mode=TwoWay}" VerticalAlignment="Center" TabIndex="0"/>
+                                <TextBox Name="txtApellidoCliente" materialDesign:HintAssist.Hint="Apellidos" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="0" Grid.Column="1" Margin="10,0" Text="{Binding Path=apellidos,Mode=TwoWay}" VerticalAlignment="Center" TabIndex="1"/>
+                                <TextBox Name="txtNifCliente" materialDesign:HintAssist.Hint="NIF" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="1" Grid.Column="0" Margin="10,0" Text="{Binding Path=nif,Mode=TwoWay}"  VerticalAlignment="Center" MaxLength="9" TabIndex="2"/>
+                                <TextBox Name="txtTelefonoCliente" materialDesign:HintAssist.Hint="Teléfono" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="1" Grid.Column="1" Margin="10,0" Text="{Binding Path=telefono,Mode=TwoWay}"  VerticalAlignment="Center" MaxLength="9" TabIndex="3"/>
+                                <TextBox Name="txtCorreoCliente" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="2" Grid.Column="0" Margin="10,0" Text="{Binding Path=correo,Mode=TwoWay}"  VerticalAlignment="Center" TabIndex="4"/>
+                                <TextBox Name="txtDireccionCliente" materialDesign:HintAssist.Hint="Dirección" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="2" Grid.Column="1" Margin="10,0" Text="{Binding Path=direccion,Mode=TwoWay}"  VerticalAlignment="Center" TabIndex="5"/>
+                                <ComboBox Name="cmbTipoSocio" materialDesign:HintAssist.Hint="Tipo" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Grid.Row="3" Grid.Column="0" Margin="10,0" Text="{Binding Path=tipo,Mode=TwoWay}" VerticalAlignment="Center" SelectedIndex="0" IsEditable="False" TabIndex="0">
+                                    <ComboBoxItem Content="Normal"/>
+                                    <ComboBoxItem Content="Socio"/>
+                                </ComboBox>
+                            </Grid>
+                        </GroupBox>
+                    </DockPanel>
+                </TabItem>
+                <TabItem Name="tbFunciones" Header="Funciones">
+                    <DockPanel Name="dckpFunciones" LastChildFill="True">
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Right" Margin="16,10">
+                            <TextBox Name="txtBuscarFuncion" materialDesign:HintAssist.Hint="Buscar por código" MinHeight="25"  MinWidth="200" MaxWidth="200" Margin="5,7" TabIndex="0"/>
+                            <Button Name="btnBuscarFuncion" Margin="5,0" Click="btnBuscarFuncion_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/search.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnLimpiarFuncion" Click="btnLimpiarFuncion_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/clear.png" MaxHeight="25"/>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Center" Margin="16,10">
+                            <Button Name="btnAñadirFuncion" Margin="10,0,10,0" Click="btnAñadirFuncion_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/save.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnModificarFuncion" Margin="10,0,10,0" Click="btnModificarFuncion_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/edit.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnEliminarFuncion"  Margin="10,0,10,0" Click="btnEliminarFuncion_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/delete.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnListaFunciones" Margin="10,0" Click="btnListaFunciones_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/list.png" MaxHeight="25"/>
+                            </Button>
+                        </StackPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <GroupBox Header="Datos de Función" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="0" Grid.ColumnSpan="2" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Name="txtCodigoFuncion" materialDesign:HintAssist.Hint="Código Funcion" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="0" Grid.Column="0"  Margin="10,0" Text="{Binding Path=CodigoFuncion, Mode=OneWay}" VerticalAlignment="Center" TabIndex="0"/>
+                                    <ComboBox Name="txtFormatoFuncion"  materialDesign:HintAssist.Hint="Formato" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Grid.Row="0" Grid.Column="1"  Margin="10,0" Text="{Binding Path=formato, Mode=TwoWay}" IsEditable="False" SelectedIndex="0" VerticalAlignment="Center" TabIndex="1">
+                                        <ComboBoxItem Content="Normal"/>
+                                        <ComboBoxItem Content="HD"/>
+                                        <ComboBoxItem Content="3D"/>
+                                    </ComboBox>
+                                    <TextBox Name="txtCodSalaFuncion" materialDesign:HintAssist.Hint="Código Sala" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="1" Grid.Column="0"  Margin="10,0" Text="{Binding Path=CodigoSala, Mode=TwoWay}" VerticalAlignment="Center" TabIndex="2"/>
+                                    <TextBox Name="txtCodPeliFuncion" materialDesign:HintAssist.Hint="Código Pelicula" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="1" Grid.Column="1"  Margin="10,0" Text="{Binding Path=CodigoPelicula, Mode=TwoWay}" VerticalAlignment="Center" TabIndex="3"/>
+                                    <DatePicker Name="dtpkFechaInicioFuncion" materialDesign:HintAssist.Hint="Fecha de inicio" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Grid.Row="2" Grid.Column="0"  Margin="10,0" Text="{Binding Path=fechaInicio, Mode=TwoWay}" VerticalAlignment="Center" TabIndex="4"/>
+                                    <DatePicker Name="dtpkFechaFinFuncion"  materialDesign:HintAssist.Hint="Fecha de fin" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Grid.Row="2" Grid.Column="1"  Margin="10,0" Text="{Binding Path=fechaFin, Mode=TwoWay}" VerticalAlignment="Center" TabIndex="5"/>
+                                    <CheckBox Name="chckActivoFuncion" Style="{StaticResource MaterialDesignCheckBox}" Content="Activa" Grid.Row="3" Grid.Column="0"  Margin="10,0" IsChecked="{Binding Path=activo, Mode=TwoWay}" VerticalAlignment="Center" Checked="chckActivoFuncion_Checked" TabIndex="6"/>
+                                </Grid>
+                            </GroupBox>
+                            <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Margin="16,0" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <GroupBox Header="Lista de Salas" Style="{DynamicResource MaterialDesignGroupBox}" Margin="1" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                                    <DataGrid Name="dtgrSalasFuncion" CanUserAddRows="False"  AutoGenerateColumns="False"
+                                        ScrollViewer.CanContentScroll="True" 
+                                        ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Código Sala" Binding="{Binding CodigoSala}"/>
+                                            <DataGridTextColumn Header="Número" Binding="{Binding numero}"/>
+                                            <DataGridTextColumn Header="Filas" Binding="{Binding numFilas}"/>
+                                            <DataGridTextColumn Header="Columnas" Binding="{Binding numColumnas}"/>
+                                            <DataGridTextColumn Header="Formato" Binding="{Binding formato}"/>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </GroupBox>
+                                <GroupBox Header="Lista de Peliculas" Style="{DynamicResource MaterialDesignGroupBox}" Margin="1" Grid.Column="1" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                                    <DataGrid Name="dtgrPelisFuncion" Grid.Column="1" CanUserAddRows="False"  AutoGenerateColumns="False"
+                                        ScrollViewer.CanContentScroll="True" 
+                                        ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Código Pelicula" Binding="{Binding CodigoPelicula}"/>
+                                            <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"/>
+                                            <DataGridTextColumn Header="Duracion" Binding="{Binding duracion}"/>
+                                            <DataGridTextColumn Header="Estreno" Binding="{Binding fechaEstreno}"/>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </GroupBox>
+                            </Grid>
+                        </Grid>
+                    </DockPanel>
+                </TabItem>
+                <TabItem Name="tbHorarios" Header="Horarios">
+                    <DockPanel Name="dckpHorarios" LastChildFill="True">
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Right" Margin="16,10">
+                            <ComboBox Name="cbxBuscarHorario" materialDesign:HintAssist.Hint="Buscar por" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="5,0" MinWidth="150" IsEditable="False" TabIndex="0">
+                                <ComboBoxItem Content="lunes"/>
+                                <ComboBoxItem Content="martes"/>
+                                <ComboBoxItem Content="miércoles"/>
+                                <ComboBoxItem Content="jueves"/>
+                                <ComboBoxItem Content="viernes"/>
+                                <ComboBoxItem Content="sábado"/>
+                                <ComboBoxItem Content="domingo"/>
+                            </ComboBox>
+                            <TextBox Name="txtBuscarHorario" materialDesign:HintAssist.Hint="Código función" MinHeight="25"  MinWidth="200" MaxWidth="200" Margin="5,0" TabIndex="1"/>
+                            <Button Name="btnBuscarHorario" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="5,0" Click="btnBuscarHorario_Click">
+                                <Image Source="/imagenes/iconos/search.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnLimpiarHorario" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Click="btnLimpiarHorario_Click">
+                                <Image Source="/imagenes/iconos/clear.png" MaxHeight="25"/>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Center" Margin="16,10">
+                            <Button Name="btnAñadirHorario" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="10,0,10,0" Click="btnAñadirHorario_Click">
+                                <Image Source="/imagenes/iconos/save.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnModificarHorario" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="10,0,10,0" Click="btnModificarHorario_Click">
+                                <Image Source="/imagenes/iconos/edit.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnEliminarHorario"  Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3"  Margin="10,0,10,0" Click="btnEliminarHorario_Click">
+                                <Image Source="/imagenes/iconos/delete.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnListaHorarios" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Grid.Row="3" Grid.Column="3" Margin="10,0" Click="btnListaHorarios_Click">
+                                <Image Source="/imagenes/iconos/list.png" MaxHeight="25"/>
+                            </Button>
+                        </StackPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <GroupBox Header="Datos de Horario" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="0" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <ComboBox Name="cbxDiasSemanaHorario" materialDesign:HintAssist.Hint="Día de la semana" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Grid.Row="0" Grid.Column="0" Margin="10,0" Text="{Binding Path=DiaSemana,Mode=OneWay}" VerticalAlignment="Center" IsEditable="False" SelectedIndex="0" TabIndex="0">
+                                        <ComboBoxItem Content="lunes"/>
+                                        <ComboBoxItem Content="martes"/>
+                                        <ComboBoxItem Content="miércoles"/>
+                                        <ComboBoxItem Content="jueves"/>
+                                        <ComboBoxItem Content="viernes"/>
+                                        <ComboBoxItem Content="sábado"/>
+                                        <ComboBoxItem Content="domingo"/>
+                                    </ComboBox>
+                                    <TextBox Name="txtCodigoFuncionHorario" materialDesign:HintAssist.Hint="Código Función" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Column="1" Margin="10,0" Text="{Binding Path=CodigoFuncion,Mode=OneWay}" VerticalAlignment="Center" TabIndex="1"/>
+                                    <materialDesign:TimePicker materialDesign:HintAssist.Hint="Hora Inicio" Is24Hours="True" Name="txtHoraInicioHorario" Grid.Row="1" Grid.Column="0" Margin="10,0" Text="{Binding Path=horaInicio,Mode=TwoWay}" VerticalAlignment="Center" TabIndex="2"/>
+                                    <materialDesign:TimePicker materialDesign:HintAssist.Hint="Hora Fin" Is24Hours="True" Name="txtHoraFinHorario" Grid.Row="1" Grid.Column="1" Margin="10,0" Text="{Binding Path=horaFin,Mode=TwoWay}" VerticalAlignment="Center" TabIndex="3" />
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox Header="Lista de Funciones" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="1" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                                <DataGrid Name="dtgrSalasHorarios" CanUserAddRows="False" AutoGenerateColumns="False"
+                                        ScrollViewer.CanContentScroll="True" 
+                                        ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Código Función" Binding="{Binding CodigoFuncion}"/>
+                                        <DataGridTextColumn Header="Formato" Binding="{Binding formato}"/>
+                                        <DataGridTextColumn Header="Código Sala" Binding="{Binding CodigoSala}"/>
+                                        <DataGridTextColumn Header="Código Película" Binding="{Binding CodigoPelicula}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </GroupBox>
+                        </Grid>
+                    </DockPanel>
+                </TabItem>
+                <TabItem Name="tbSalas" Header="Salas">
+                    <DockPanel Name="dckpSalas" LastChildFill="True">
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Right" Margin="16,10">
+                            <ComboBox Name="cbxBuscarSala" materialDesign:HintAssist.Hint="Buscar por" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="5,0" MinWidth="150" IsEditable="False" TabIndex="0">
+                                <ComboBoxItem Content="Código"/>
+                                <ComboBoxItem Content="Número"/>
+                            </ComboBox>
+                            <TextBox Name="txtBuscarSala" materialDesign:HintAssist.Hint="Dato" MinHeight="25"  MinWidth="200" MaxWidth="200" Margin="5,0" TabIndex="1"/>
+                            <Button Name="btnBuscarSala" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="5,0" Click="btnBuscarSala_Click">
+                                <Image Source="/imagenes/iconos/search.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnLimpiarSala" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Click="btnLimpiarSala_Click">
+                                <Image Source="/imagenes/iconos/clear.png" MaxHeight="25"/>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Center" Margin="16,10">
+                            <Button Name="btnAñadirSala" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="10,0,10,0" Click="btnAñadirSala_Click">
+                                <Image Source="/imagenes/iconos/save.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnModificarSala" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="10,0,10,0" Click="btnModificarSala_Click">
+                                <Image Source="/imagenes/iconos/edit.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnEliminarSala" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3"  Margin="10,0,10,0" Click="btnEliminarSala_Click">
+                                <Image Source="/imagenes/iconos/delete.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnListaSalas" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Margin="10,0" Click="btnListaSalas_Click">
+                                <Image Source="/imagenes/iconos/list.png" MaxHeight="25"/>
+                            </Button>
+                        </StackPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <GroupBox Header="Datos de Sala" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="0" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Name="txtCodigoSala" materialDesign:HintAssist.Hint="Código" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="0" Grid.Column="0" Margin="10,0" Text="{Binding Path=CodigoSala,Mode=OneWay}" VerticalAlignment="Center" TabIndex="0"/>
+                                    <TextBox Name="txtNumeroSala" materialDesign:HintAssist.Hint="Número de sala" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="0" Grid.Column="1" Margin="10,0" Text="{Binding Path=numero,Mode=TwoWay}" VerticalAlignment="Center" TabIndex="1"/>
+                                    <TextBox Name="txtNumeroFilas" materialDesign:HintAssist.Hint="Número de filas" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="1" Grid.Column="0" Margin="10,0" Text="{Binding Path=numFilas,Mode=TwoWay}"  VerticalAlignment="Center" TabIndex="2"/>
+                                    <TextBox Name="txtNumeroColumnas" materialDesign:HintAssist.Hint="Número de columnas" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="1" Grid.Column="1" Margin="10,0" Text="{Binding Path=numColumnas,Mode=TwoWay}"  VerticalAlignment="Center" TabIndex="3"/>
+                                    <ComboBox Name="cbxFormatoSala" materialDesign:HintAssist.Hint="Formato" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Grid.Row="2" Grid.Column="0" Margin="10,0" Text="{Binding Path=formato,Mode=TwoWay}" VerticalAlignment="Center" IsEditable="False" SelectedIndex="0" TabIndex="4">
+                                        <ComboBoxItem Content="Normal"/>
+                                        <ComboBoxItem Content="Vip"/>
+                                    </ComboBox>
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox Header="Lista de Funciones" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="1" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                                <DataGrid Name="dtgrFuncionesSala" CanUserAddRows="False"  AutoGenerateColumns="False"
+                                        ItemsSource="{Binding Path=Funciones}"
+                                        ScrollViewer.CanContentScroll="True" 
+                                        ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Código Funcion" Binding="{Binding CodigoFuncion}"/>
+                                        <DataGridTextColumn Header="Formato" Binding="{Binding formato}"/>
+                                        <DataGridTextColumn Header="Código Película" Binding="{Binding CodigoPelicula}"/>
+                                        <DataGridTextColumn Header="Fecha Inicio" Binding="{Binding fechaInicio}"/>
+                                        <DataGridTextColumn Header="Fecha Fin" Binding="{Binding fechaFin}"/>
+                                        <DataGridCheckBoxColumn Header="Estado" Binding="{Binding activo}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </GroupBox>
+                        </Grid>
+                    </DockPanel>
+                </TabItem>
+                <TabItem Name="tbTarifas" Header="Tarifas">
+                    <DockPanel Name="dckpTarifas" LastChildFill="True">
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Right" Margin="16,10">
+                            <TextBox Name="txtBuscarTarifa"  materialDesign:HintAssist.Hint="Buscar por código" Style="{StaticResource MaterialDesignFloatingHintTextBox}" MinHeight="25"  MinWidth="200" MaxWidth="200" Margin="5,1" TabIndex="0"/>
+                            <Button Name="btnBuscarTarifa" Margin="5,0" Click="btnBuscarTarifa_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/search.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnLimpiarTarifa" Click="btnLimpiarTarifa_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/clear.png" MaxHeight="25"/>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Center" Margin="16,0">
+                            <Button Name="btnAñadirTarifa" Margin="10,0,10,0" Click="btnAñadirTarifa_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/save.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnModificarTarifa"  Margin="10,0,10,0" Click="btnModificarTarifa_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/edit.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnEliminarTarifa"  Margin="10,10" Click="btnEliminarTarifa_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/delete.png" MaxHeight="25"/>
+                            </Button>
+                        </StackPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <GroupBox Header="Datos de Tarifa" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="0" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Name="txtCodigoTarifa" materialDesign:HintAssist.Hint="Código" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="0" Grid.Column="0" Margin="10,0" Text="{Binding Path=CodigoTarifa, Mode=OneWay}" VerticalAlignment="Center" TabIndex="0"/>
+                                    <ComboBox Name="cbxFormatoSalaTarifa" materialDesign:HintAssist.Hint="Formato Sala" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Grid.Row="0" Grid.Column="1" Margin="10,0" Text="{Binding Path=formatoSala, Mode=TwoWay}" VerticalAlignment="Center" TabIndex="1">
+                                        <ComboBoxItem Content="Normal"/>
+                                        <ComboBoxItem Content="Vip"/>
+                                    </ComboBox>
+                                    <ComboBox Name="cbxFormatoTarifa" materialDesign:HintAssist.Hint="Formato Función" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Grid.Row="1" Grid.Column="0" Margin="10,0" Text="{Binding Path=formatoFuncion, Mode=TwoWay}" VerticalAlignment="Center" TabIndex="2">
+                                        <ComboBoxItem Content="Normal"/>
+                                        <ComboBoxItem Content="3D"/>
+                                    </ComboBox>
+                                    <ComboBox Name="cbxFormatoTarifaCliente" materialDesign:HintAssist.Hint="Formato cliente" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Grid.Row="1" Grid.Column="1" Margin="10,0" Text="{Binding Path=formatoCliente, Mode=TwoWay}" VerticalAlignment="Center" TabIndex="3">
+                                        <ComboBoxItem Content="Normal"/>
+                                        <ComboBoxItem Content="Socio"/>
+                                    </ComboBox>
+                                    <CheckBox Name="chckDiaEspectadorTarifa" Style="{StaticResource MaterialDesignCheckBox}" Content="Día del espectador" Grid.Row="2" Grid.Column="0" Margin="10,0" IsChecked="{Binding Path=diaEspectador, Mode=TwoWay}" VerticalAlignment="Center" TabIndex="4"/>
+                                    <TextBox Name="txtPrecioTarifa" materialDesign:HintAssist.Hint="Precio" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="2" Grid.Column="1" Margin="10,0" Text="{Binding Path=precio, Mode=TwoWay}" VerticalAlignment="Center" TabIndex="5"/>
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox Header="Lista de Tarifas" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="1" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                                <DataGrid Name="dtgrTarifasActuales" CanUserAddRows="False" AutoGenerateColumns="False"
+                                        ScrollViewer.CanContentScroll="True" 
+                                        ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Código" Binding="{Binding CodigoTarifa}"/>
+                                        <DataGridTextColumn Header="Formato Sala" Binding="{Binding formatoSala}"/>
+                                        <DataGridTextColumn Header="Formato Función" Binding="{Binding formatoFuncion}"/>
+                                        <DataGridTextColumn Header="Formato Cliente" Binding="{Binding formatoCliente}"/>
+                                        <DataGridCheckBoxColumn Header="Día del espectador" Binding="{Binding diaEspectador}"/>
+                                        <DataGridTextColumn Header="Precio" Binding="{Binding precio}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </GroupBox>
+                        </Grid>
+                    </DockPanel>
+                </TabItem>
+                <TabItem Name="tbProductoras" Header="Productoras">
+                    <DockPanel Name="dckpProductoras" LastChildFill="True">
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Right" Margin="16,10">
+                            <ComboBox Name="cbxBuscarProductora" materialDesign:HintAssist.Hint="Buscar por" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="5,0" MinWidth="150" IsEditable="False" TabIndex="0">
+                                <ComboBoxItem Content="Código"/>
+                                <ComboBoxItem Content="Nombre"/>
+                            </ComboBox>
+                            <TextBox Name="txtBuscarProductora" materialDesign:HintAssist.Hint="Dato" MinHeight="25" MinWidth="200" MaxWidth="200" Margin="5,0" TabIndex="1"/>
+                            <Button Name="btnBuscarProductora" Margin="5,0" Click="btnBuscarProductora_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/search.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnLimpiarProductora" Click="btnLimpiarProductora_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/clear.png" MaxHeight="25"/>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Center" Margin="16,10">
+                            <Button Name="btnAñadirProductora" Margin="10,0,10,0" Click="btnAñadirProductora_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/save.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnModificarProductora" Margin="10,0,10,0" Click="btnModificarProductora_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/edit.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnEliminarProductora"  Margin="10,0,10,0" Click="btnEliminarProductora_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/delete.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnListaProductoras" Margin="10,0" Click="btnListaProductoras_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/list.png" MaxHeight="25"/>
+                            </Button>
+                        </StackPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <GroupBox Header="Datos de productora" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="0" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Name="txtCodigoProductora" materialDesign:HintAssist.Hint="Código" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="0" Grid.Column="0" Margin="10,0" Text="{Binding Path=CodigoProductora,Mode=OneWay}" VerticalAlignment="Center" TabIndex="0"/>
+                                    <TextBox Name="txtNombreProductora" materialDesign:HintAssist.Hint="Nombre" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="0" Grid.Column="1" Margin="10,0" Text="{Binding Path=nombre,Mode=TwoWay}" VerticalAlignment="Center" TabIndex="1"/>
+                                    <TextBox Name="txtDescripcionProductora" materialDesign:HintAssist.Hint="País" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="1" Grid.Column="0" Margin="10,0" Text="{Binding Path=pais,Mode=TwoWay}" VerticalAlignment="Center" TabIndex="2"/>
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox Header="Lista de Películas" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="1" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                                <DataGrid Name="dtgrPeliculasProductora" ItemsSource="{Binding Path=Peliculas,Mode=OneWay}" CanUserAddRows="False"  AutoGenerateColumns="False"
+                                    ScrollViewer.CanContentScroll="True" 
+                                    ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                    ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Código Pelicula" Binding="{Binding CodigoPelicula}"/>
+                                        <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"/>
+                                        <DataGridTextColumn Header="Duración" Binding="{Binding duracion}"/>
+                                        <DataGridTextColumn Header="Fecha Estreno" Binding="{Binding fechaEstreno}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </GroupBox>
+                        </Grid>
+
+                    </DockPanel>
+                </TabItem>
+                <TabItem Name="tbCategorias" Header="Cat.Películas">
+                    <DockPanel Name="dckpCategorias" LastChildFill="True">
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Right" Margin="16,10">
+                            <ComboBox Name="cbxBuscarCategorias" materialDesign:HintAssist.Hint="Buscar por" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="5,0" MinWidth="150" IsEditable="False" TabIndex="0">
+                                <ComboBoxItem Content="Código"/>
+                                <ComboBoxItem Content="Nombre"/>
+                            </ComboBox>
+                            <TextBox Name="txtBuscarCategoria" materialDesign:HintAssist.Hint="Dato" MinHeight="25" MinWidth="200" MaxWidth="200" Margin="5,0" TabIndex="1"/>
+                            <Button Name="btnBuscarCategoria" Margin="5,0" Click="btnBuscarCategoria_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/search.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnLimpiarCategoria" Click="btnLimpiarCategoria_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/clear.png" MaxHeight="25"/>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Center" Margin="16,0">
+                            <Button Name="btnAñadirCategoria" Margin="10,0,10,0" Click="btnAñadirCategoria_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/save.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnModificarCategoria" Margin="10,0,10,0" Click="btnModificarCategoria_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/edit.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnEliminarCategoria"  Margin="10,0,10,0" Click="btnEliminarCategoria_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/delete.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnListaCategorias" Margin="10" Click="btnListaCategorias_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/list.png" MaxHeight="25"/>
+                            </Button>
+                        </StackPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <GroupBox Header="Datos de categoría de Película" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="0" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Name="txtCodigoCategoria" materialDesign:HintAssist.Hint="Código" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="0" Grid.Column="0" Margin="10,0" Text="{Binding Path=CodigoCategoriaPelicula, Mode=OneWay}" VerticalAlignment="Center" TabIndex="0"/>
+                                    <TextBox Name="txtNombreCategoria" materialDesign:HintAssist.Hint="Nombre" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="0" Grid.Column="1" Margin="10,0" Text="{Binding Path=nombre, Mode=TwoWay}" VerticalAlignment="Center" TabIndex="1"/>
+                                    <TextBox Name="txtDescripcionCategoria" materialDesign:HintAssist.Hint="Descripción" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="1" Grid.Column="0" Margin="10,0" Text="{Binding Path=descripcion, Mode=TwoWay}" VerticalAlignment="Center" TabIndex="2"/>
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox Header="Lista de Películas" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="1" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                                <DataGrid Name="dtgrPeliculasCategoria" ItemsSource="{Binding Peliculas, Mode=OneWay}" CanUserAddRows="False"  AutoGenerateColumns="False"
+                                        ScrollViewer.CanContentScroll="True" 
+                                        ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Código Pelicula" Binding="{Binding CodigoPelicula}"/>
+                                        <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"/>
+                                        <DataGridTextColumn Header="Duración" Binding="{Binding duracion}"/>
+                                        <DataGridTextColumn Header="Fecha Estreno" Binding="{Binding fechaEstreno}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </GroupBox>
+                        </Grid>
+                    </DockPanel>
+                </TabItem>
+                <TabItem Name="tbPeliculas" Header="Peliculas">
+                    <DockPanel Name="dckpPeliculas" LastChildFill="True">
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Right" Margin="16,10">
+                            <ComboBox Name="cbxBuscarPelicula" materialDesign:HintAssist.Hint="Buscar por" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="5,0" MinWidth="150" IsEditable="False" TabIndex="0">
+                                <ComboBoxItem Content="Código"/>
+                                <ComboBoxItem Content="Nombre"/>
+                            </ComboBox>
+                            <TextBox Name="txtBuscarPelicula" materialDesign:HintAssist.Hint="Dato" MinHeight="25"  MinWidth="200" MaxWidth="200" Margin="5,0" TabIndex="1"/>
+                            <Button Name="btnBuscarPelicula" Margin="5,0" Click="btnBuscarPelicula_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/search.png" MaxHeight="25"/>
+                            </Button>
+                            <Button x:Name="btnLimpiarPelicula" Click="btnLimpiarPelicula_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/clear.png" MaxHeight="25"/>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Center" Margin="16,10">
+                            <Button Name="btnAñadirPelicula" Margin="10,0,10,0" Click="btnAñadirPelicula_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/save.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnModificarPelicula" Margin="10,0,10,0" Click="btnModificarPelicula_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/edit.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnEliminarPelicula"  Margin="10,0,10,0" Click="btnEliminarPelicula_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/delete.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnListaPelicula" VerticalAlignment="Center" HorizontalAlignment="Center" Click="btnListaPelicula_Click" Margin="10,0"  Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/list.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnRecaudaciónPelicula" VerticalAlignment="Center" HorizontalAlignment="Center" Click="btnRecaudaciónPelicula_Click" Margin="10,0"  Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                <Image Source="/imagenes/iconos/coin.png" MaxHeight="25"/>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <GroupBox Header="Datos de película" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="0" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Name="txtCodigoPelicula" materialDesign:HintAssist.Hint="Código" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="0" Margin="10,0" Text="{Binding Path=CodigoPelicula,Mode=OneWay}" VerticalAlignment="Center" MinWidth="150" TabIndex="0"/>
+                                    <TextBox Name="txtNombrePelicula" materialDesign:HintAssist.Hint="Nombre" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="1" Margin="10,0" Text="{Binding Path=nombre,Mode=TwoWay}" VerticalAlignment="Center" TabIndex="1"/>
+                                    <TextBox Name="txtDuracionPelicula" materialDesign:HintAssist.Hint="Duración" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="2" Margin="10,0" Text="{Binding Path=duracion,Mode=TwoWay}" VerticalAlignment="Center" TabIndex="2"/>
+                                    <DatePicker Name="dtpkFechaEstrenoPelicula"  materialDesign:HintAssist.Hint="Fecha de estreno" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Grid.Row="3" Margin="10,0" Text="{Binding fechaEstreno, Mode=TwoWay}" VerticalAlignment="Center" TabIndex="3"/>
+                                    <TextBox Name="txtCodigoProductoraPelicula" materialDesign:HintAssist.Hint="Código de productora" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="4" Margin="10,0" Text="{Binding Path=CodigoProductora,Mode=TwoWay}" VerticalAlignment="Center" TabIndex="4"/>
+                                    <TextBox Name="txtCodigoCategoríaPelicula" materialDesign:HintAssist.Hint="Código de categoría" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="5" Margin="10,0" Text="{Binding Path=CodigoCategoriaPelicula,Mode=TwoWay}" VerticalAlignment="Center" TabIndex="5"/>
+                                    <CheckBox Name="chckEnCarteleraPelicula" Style="{StaticResource MaterialDesignCheckBox}" Content="En cartelera" Grid.Row="6" Margin="10,0" IsChecked="{Binding Path=enCartelera,Mode=TwoWay}" VerticalAlignment="Center" Checked="chckEnCarteleraPelicula_Checked" TabIndex="6"/>
+                                    <Button Name="btnImagenPelicula" Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Center" Click="btnImagenPelicula_Click"  Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" TabIndex="7">
+                                        <Image Source="/imagenes/iconos/addimage.png" MaxHeight="25"/>
+                                    </Button>
+                                </Grid>
+                            </GroupBox>
+                        </StackPanel>
+                        <GroupBox Header="Descripción" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="0" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1" DockPanel.Dock="Bottom">
+                            <TextBox Name="txtDescripcionPelicula" materialDesign:HintAssist.Hint="Una breve descripción..." Style="{StaticResource MaterialDesignTextAreaTextBox}" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" TextWrapping="Wrap" MaxHeight="100" MinHeight="100" Margin="32,0" Text="{Binding Path=descripcion,Mode=TwoWay}" VerticalAlignment="Center" MinWidth="150" TabIndex="8"/>
+                        </GroupBox>
+                        <Image Name="imgPelicula" Source="{Binding Path=imagen,Mode=TwoWay}" Grid.Column="1" Stretch="Uniform" Margin="16,0"/>
+                    </DockPanel>
+                </TabItem>
+                <TabItem Name="tbTPV" Header="TPV Entrada">
+                    <DockPanel Name="dckpTPV">
+                        <Grid DockPanel.Dock="Bottom" MaxHeight="250" Margin="16,0,16,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <DockPanel Grid.Column="0" LastChildFill="True" Margin="2" MinHeight="180" MaxHeight="180">
+                                <Button Name="btnAnteriorPeliculaTPV" VerticalAlignment="Center" HorizontalAlignment="Left" DockPanel.Dock="Left" Click="btnAnteriorPeliculaTPV_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                    <Image Source="/imagenes/iconos/arrowleft.png" MaxHeight="25"/>
+                                </Button>
+                                <Button Name="btnSiguientePeliculaTPV" DockPanel.Dock="Right" VerticalAlignment="Center" HorizontalAlignment="Right" Click="btnSiguientePeliculaTPV_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                    <Image Source="/imagenes/iconos/arrowright.png" MaxHeight="25"/>
+                                </Button>
+                                <Image Name="imgPeliculaSeleccionadaTPV" Stretch="Uniform"/>
+                            </DockPanel>
+                            <GroupBox Header="Datos de la entrada" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Column="1" Margin="1,0,1,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <ComboBox Name="cbxFuncionesTPV" materialDesign:HintAssist.Hint="Función" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Grid.Row="0" Margin="10,0" VerticalAlignment="Center" IsEditable="False" SelectionChanged="cbxFuncionesTPV_SelectionChanged" TabIndex="0"/>
+                                    <DatePicker Name="dtpkFechaFuncionTPV" materialDesign:HintAssist.Hint="Fecha" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Grid.Row="1" Margin="10,15,10,0" VerticalAlignment="Center" SelectedDateChanged="dtpkFechaFuncionTPV_SelectedDateChanged" TabIndex="1"/>
+                                    <ComboBox Name="cbxHorasFuncionTPV" materialDesign:HintAssist.Hint="Hora" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Grid.Row="2" Margin="10,0" VerticalAlignment="Center" IsEditable="False" SelectionChanged="cbxHorasFuncionTPV_SelectionChanged" TabIndex="2"/>
+                                    <TextBox Name="lblSalaFuncionTPV"  materialDesign:HintAssist.Hint="Sala" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="3" Margin="10,0" VerticalAlignment="Center" IsEnabled="False"/>
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox Header="Facturación" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Column="2" Margin="1,0,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                                <Grid >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Name="txtClienteFuncionTPV" materialDesign:HintAssist.Hint="Cliente Id" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="0" Margin="10,0" VerticalAlignment="Center" TabIndex="3"/>
+                                    <ComboBox Name="cbxTarifasFuncionTPV" materialDesign:HintAssist.Hint="Tarifa" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Grid.Row="1" Margin="10,0" VerticalAlignment="Center" IsEditable="False" SelectionChanged="cbxTarifasFuncionTPV_SelectionChanged" TabIndex="4"/>
+                                    <Button Name="btnFacturarEntradaTPV" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,2" Click="btnFacturarEntradaTPV_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                        <Image Source="/imagenes/iconos/count.png" MaxHeight="25"/>
+                                    </Button>
+                                    <Button Name="btnNuevaFacturaEntradaTPV" Grid.Row="3" VerticalAlignment="Center" Margin="10,2" HorizontalAlignment="Center" Click="btnNuevaFacturaEntradaTPV_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                        <Image Source="/imagenes/iconos/add.png" MaxHeight="25"/>
+                                    </Button>
+                                </Grid>
+                            </GroupBox>
+                        </Grid>
+                        <GroupBox Header="Butacas" Style="{DynamicResource MaterialDesignGroupBox}" Margin="16" materialDesign:ColorZoneAssist.Mode="Accent" BorderThickness="1">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" >
+                                <UniformGrid Name="unfgButacas"></UniformGrid>
+                            </ScrollViewer>
+                        </GroupBox>
+                    </DockPanel>
+                </TabItem>
+                <TabItem Name="tbProveedores" Header="Proveedores">
+                    <DockPanel Name="dckpProveedores" LastChildFill="True">
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Right" Margin="16,10">
+                            <ComboBox Name="cbxBuscarProveedor" materialDesign:HintAssist.Hint="Buscar por" Style="{StaticResource MaterialDesignFloatingHintComboBox}"  Margin="5,0" MinWidth="150" IsEditable="False" TabIndex="0">
+                                <ComboBoxItem Content="Código"/>
+                                <ComboBoxItem Content="NIF"/>
+                                <ComboBoxItem Content="Teléfono"/>
+                                <ComboBoxItem Content="Email"/>
+                            </ComboBox>
+                            <TextBox Name="txtBuscarProveedores" materialDesign:HintAssist.Hint="Dato" MinHeight="25"  MinWidth="200" MaxWidth="200" Margin="5,0" TabIndex="1"/>
+                            <Button Name="btnBuscarProveedores" Margin="5,0" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Click="btnBuscarProveedores_Click">
+                                <Image Source="/imagenes/iconos/search.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnLimpiarProveedores" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Click="btnLimpiarProveedores_Click">
+                                <Image Source="/imagenes/iconos/clear.png" MaxHeight="25"/>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Center" Margin="16,10">
+                            <Button Name="btnAñadirProveedor" Margin="10,0,10,0" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Click="btnAñadirProveedor_Click">
+                                <Image Source="/imagenes/iconos/save.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnModificarProveedor" Margin="10,0,10,0" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Click="btnModificarProveedor_Click">
+                                <Image Source="/imagenes/iconos/edit.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnEliminarProveedor"  Margin="10,0,10,0" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Click="btnEliminarProveedor_Click">
+                                <Image Source="/imagenes/iconos/delete.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnListaProveedores" Margin="10,0" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Click="btnListaProveedores_Click">
+                                <Image Source="/imagenes/iconos/list.png" MaxHeight="25"/>
+                            </Button>
+                        </StackPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <GroupBox Header="Datos Personales" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="0" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Name="txtNombreProveedor" materialDesign:HintAssist.Hint="Nombre" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="0" Grid.Column="0" Margin="10,0" Text="{Binding Path=nombre,Mode=TwoWay}" VerticalAlignment="Center" TabIndex="0"/>
+                                    <TextBox Name="txtApellidoProveedor" materialDesign:HintAssist.Hint="Apellidos" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="0" Grid.Column="1" Margin="10,0" Text="{Binding Path=apellidos,Mode=TwoWay}" VerticalAlignment="Center" TabIndex="1"/>
+                                    <TextBox Name="txtNifProveedor" materialDesign:HintAssist.Hint="NIF" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="1" Grid.Column="0" Margin="10,0" Text="{Binding Path=nif,Mode=TwoWay}"  VerticalAlignment="Center" MaxLength="9" TabIndex="2"/>
+                                    <TextBox Name="txtDireccionProveedor" materialDesign:HintAssist.Hint="Dirección" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="1" Grid.Column="1" Margin="10,0" Text="{Binding Path=direccion,Mode=TwoWay}"  VerticalAlignment="Center" TabIndex="3"/>
+                                    <TextBox Name="txtTelefonoProveedor" materialDesign:HintAssist.Hint="Teléfono" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="2" Grid.Column="0" Margin="10,0" Text="{Binding Path=telefono,Mode=TwoWay}"  VerticalAlignment="Center" MaxLength="9" TabIndex="4"/>
+                                    <TextBox Name="txtCorreoProveedor" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="2" Grid.Column="1" Margin="10,0" Text="{Binding Path=correo,Mode=TwoWay}"  VerticalAlignment="Center" TabIndex="5"/>
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox Header="Datos de Proveedor" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="1" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox materialDesign:HintAssist.Hint="Código" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="txtCodigoProveedor" Grid.Row="0" Grid.Column="0" Text="{Binding Path=CodigoProveedor, Mode=OneWay}" VerticalAlignment="Center" Margin="10,0" TabIndex="0"/>
+                                    <TextBox Name="txtContactoProveedor" materialDesign:HintAssist.Hint="Persona de Contacto" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="0" Grid.Column="1" Margin="10,0" Text="{Binding Path=personaContacto,Mode=TwoWay}"  VerticalAlignment="Center" TabIndex="1"/>
+                                    <ComboBox Name="cmbTipoProveedor" materialDesign:HintAssist.Hint="Tipo" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Grid.Row="1" Grid.Column="0" Margin="10,0" Text="{Binding Path=tipo,Mode=TwoWay}" VerticalAlignment="Center" SelectedIndex="0" IsEditable="False" TabIndex="2">
+                                        <ComboBoxItem Content="Empresa"/>
+                                        <ComboBoxItem Content="Particular"/>
+                                    </ComboBox>
+                                </Grid>
+                            </GroupBox>
+                        </Grid>
+                    </DockPanel>
+                </TabItem>
+                <TabItem Name="tbCategoriasProductos" Header="Cat.Productos">
+                    <DockPanel Name="dckpCategoriasProductos" LastChildFill="True">
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Right" Margin="16,10">
+                            <ComboBox Name="cbxBuscarCategoriasProductos" materialDesign:HintAssist.Hint="Buscar por" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Margin="5,0" MinWidth="150" IsEditable="False" TabIndex="0">
+                                <ComboBoxItem Content="Código"/>
+                                <ComboBoxItem Content="Nombre"/>
+                            </ComboBox>
+                            <TextBox Name="txtBuscarCategoriaProductos" materialDesign:HintAssist.Hint="Dato" MinHeight="25"  MinWidth="200" MaxWidth="200" Margin="5,0" TabIndex="1"/>
+                            <Button Name="btnBuscarCategoriaProducto" Margin="5,0" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Click="btnBuscarCategoriaProducto_Click">
+                                <Image Source="/imagenes/iconos/search.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnLimpiarCategoriaProducto" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Click="btnLimpiarCategoriaProducto_Click">
+                                <Image Source="/imagenes/iconos/clear.png" MaxHeight="25"/>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Center" Margin="16,0">
+                            <Button Name="btnAñadirCategoriaProducto" Margin="10,0,10,0" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Click="btnAñadirCategoriaProducto_Click">
+                                <Image Source="/imagenes/iconos/save.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnModificarCategoriaProducto" Margin="10,0,10,0" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Click="btnModificarCategoriaProducto_Click">
+                                <Image Source="/imagenes/iconos/edit.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnEliminarCategoriaProducto"  Margin="10,0,10,0" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Click="btnEliminarCategoriaProducto_Click">
+                                <Image Source="/imagenes/iconos/delete.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnListaCategoriasProducto" Margin="10" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Click="btnListaCategoriasProducto_Click">
+                                <Image Source="/imagenes/iconos/list.png" MaxHeight="25"/>
+                            </Button>
+                        </StackPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <GroupBox Header="Datos de categoría de Producto" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="0" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Name="txtCodigoCategoriaProducto" materialDesign:HintAssist.Hint="Código" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="0" Grid.Column="0" Margin="10,0" Text="{Binding Path=CodigoCategoriaProducto, Mode=OneWay}" VerticalAlignment="Center" TabIndex="0"/>
+                                    <TextBox Name="txtNombreCategoriaProducto" materialDesign:HintAssist.Hint="Nombre" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="0" Grid.Column="1" Margin="10,0" Text="{Binding Path=nombre, Mode=TwoWay}" VerticalAlignment="Center" TabIndex="1"/>
+                                    <TextBox Name="txtDescripcionCategoriaProducto" materialDesign:HintAssist.Hint="Descripción" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="1" Grid.Column="0" Margin="10,0" Text="{Binding Path=descripcion, Mode=TwoWay}" VerticalAlignment="Center" TabIndex="2"/>
+                                    <Button Name="btnImagenCategoriaProducto" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" TabIndex="1" Click="btnImagenCategoriaProducto_Click">
+                                        <Image Source="/imagenes/iconos/addimage.png" MaxHeight="25"/>
+                                    </Button>
+                                    <Image Name="imgCategoriaProducto" Source="{Binding Path=imagen,Mode=TwoWay}" Grid.Column="3" Grid.RowSpan="2" Stretch="Uniform" Margin="16,0"/>
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox Header="Lista de Productos" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="1" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                                <DataGrid Name="dtgrPeliculasCategoriaProducto" ItemsSource="{Binding Productos, Mode=OneWay}" CanUserAddRows="False"  AutoGenerateColumns="False"
+                                        ScrollViewer.CanContentScroll="True" 
+                                        ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Código Producto" Binding="{Binding CodigoProducto}"/>
+                                        <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"/>
+                                        <DataGridTextColumn Header="Precio" Binding="{Binding precio}"/>
+                                        <DataGridTextColumn Header="Stock" Binding="{Binding stock}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </GroupBox>
+                        </Grid>
+                    </DockPanel>
+                </TabItem>
+                <TabItem Name="tbProductos" Header="Productos">
+                    <DockPanel Name="dckpProductos" LastChildFill="True">
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Right" Margin="16,10">
+                            <TextBox Name="txtBuscarProductos" materialDesign:HintAssist.Hint="Buscar por código" Style="{StaticResource MaterialDesignFloatingHintTextBox}" MinHeight="25"  MinWidth="200" MaxWidth="200" Margin="5,1" TabIndex="1"/>
+                            <Button Name="btnBuscarProductos" Margin="5,0" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Click="btnBuscarProductos_Click">
+                                <Image Source="/imagenes/iconos/search.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnLimpiarProductos" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Click="btnLimpiarProductos_Click">
+                                <Image Source="/imagenes/iconos/clear.png" MaxHeight="25"/>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Center"  Margin="16,10">
+                            <Button Name="btnAñadirProducto" Margin="10,0,10,0" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Click="btnAñadirProducto_Click">
+                                <Image Source="/imagenes/iconos/save.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnModificarProducto" Margin="10,0,10,0" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Click="btnModificarProducto_Click">
+                                <Image Source="/imagenes/iconos/edit.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnEliminarProducto"  Margin="10,0,10,0" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Click="btnEliminarProducto_Click">
+                                <Image Source="/imagenes/iconos/delete.png" MaxHeight="25"/>
+                            </Button>
+                            <Button Name="btnListaProductos" Margin="10,0" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Click="btnListaProductos_Click">
+                                <Image Source="/imagenes/iconos/list.png" MaxHeight="25"/>
+                            </Button>
+                        </StackPanel>
+                        <GroupBox Header="Datos de Producto" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="0" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox materialDesign:HintAssist.Hint="Código" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="txtCodigoProducto" Grid.Row="0" Grid.Column="0" Text="{Binding Path=CodigoProducto, Mode=OneWay}" VerticalAlignment="Center" Margin="10,0" TabIndex="0"/>
+                                <TextBox materialDesign:HintAssist.Hint="Nombre" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="txtNombreProducto" Grid.Row="0" Grid.Column="1" Text="{Binding Path=nombre, Mode=TwoWay}" VerticalAlignment="Center" Margin="10,0" TabIndex="1"/>
+                                <TextBox materialDesign:HintAssist.Hint="Precio" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="txtPrecioProducto" Grid.Row="1" Grid.Column="0" Text="{Binding Path=precio, Mode=TwoWay}" VerticalAlignment="Center" Margin="10,0" TabIndex="2"/>
+                                <TextBox materialDesign:HintAssist.Hint="Stock" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="txtStockProducto" Grid.Row="1" Grid.Column="1" Text="{Binding Path=stock, Mode=TwoWay}" VerticalAlignment="Center" Margin="10,0" TabIndex="3"/>
+                                <TextBox materialDesign:HintAssist.Hint="Código categoría de producto" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="txtCodigoCategoriaProductoProducto" Grid.Row="2" Grid.Column="0" Text="{Binding Path=CodigoCategoriaProducto, Mode=TwoWay}" VerticalAlignment="Center" Margin="10,0" TabIndex="4"/>
+                                <TextBox materialDesign:HintAssist.Hint="Código de proveedor" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="txtProveedorProducto" Grid.Row="2" Grid.Column="1" Text="{Binding Path=CodigoProveedor, Mode=TwoWay}" VerticalAlignment="Center" Margin="10,0" TabIndex="5"/>
+                                <Button Name="btnImagenProducto" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" TabIndex="6" Click="btnImagenProducto_Click">
+                                    <Image Source="/imagenes/iconos/addimage.png" MaxHeight="25"/>
+                                </Button>
+                                <Image Name="imgProducto" Source="{Binding Path=imagen,Mode=TwoWay}" Grid.Row="3" Grid.Column="1" Stretch="Uniform" Margin="16,0"/>
+                            </Grid>
+                        </GroupBox>
+                    </DockPanel>
+                </TabItem>
+                <TabItem Name="tbTPVProducto" Header="TPV Producto">
+                    <DockPanel Name="dckpTPVProducto">
+                        <DockPanel DockPanel.Dock="Right" LastChildFill="False" Margin="0,16,16,16">
+                            <GroupBox Header="Facturación" Style="{DynamicResource MaterialDesignGroupBox}" DockPanel.Dock="Bottom" MinHeight="200" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Name="txtClienteVentaTPVProducto" materialDesign:HintAssist.Hint="Cliente Id" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Row="0" Margin="10,0" VerticalAlignment="Center" TabIndex="3"/>
+                                    <Button Name="btnFacturarVentaTPVProducto" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,2" Click="btnFacturarVentaTPVProducto_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                        <Image Source="/imagenes/iconos/receipt.png" MaxHeight="25"/>
+                                    </Button>
+                                    <Button Name="btnNuevaFacturaVentaTPVProducto" Grid.Row="2" VerticalAlignment="Center" Margin="10,2" HorizontalAlignment="Center" Click="btnNuevaFacturaVentaTPVProducto_Click" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                                        <Image Source="/imagenes/iconos/add.png" MaxHeight="25"/>
+                                    </Button>
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox Header="Productos" Style="{DynamicResource MaterialDesignGroupBox}" MinWidth="180" MinHeight="200" materialDesign:ColorZoneAssist.Mode="Accent" DockPanel.Dock="Top">
+                                <Grid Name="grdProducto">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Name="txtNombreProductoTPV" materialDesign:HintAssist.Hint="Nombre" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding nombre, Mode=OneWay}" Grid.Row="0" Margin="10,0" IsEnabled="False" VerticalAlignment="Center"/>
+                                    <TextBox Name="txtPrecioProductoTPV" materialDesign:HintAssist.Hint="Precio" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding precio, Mode=OneWay}" Grid.Row="1" Margin="10,0" IsEnabled="False" VerticalAlignment="Center"/>
+                                    <TextBox Name="txtStockProductoTPV" materialDesign:HintAssist.Hint="Stock" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding stock, Mode=OneWay}" Grid.Row="2" Margin="10,0" IsEnabled="False" VerticalAlignment="Center"/>
+                                </Grid>
+                            </GroupBox>
+                        </DockPanel>
+                        <DockPanel Margin="16">
+                            <GroupBox Header="Datos de la venta" Style="{DynamicResource MaterialDesignGroupBox}" DockPanel.Dock="Bottom" MinHeight="250" Margin="0,16,0,0" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                                <DataGrid Name="dtgrListaVentaProductos" CanUserAddRows="False" AutoGenerateColumns="False"
+                                        ScrollViewer.CanContentScroll="True" 
+                                        ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Id" Binding="{Binding CodigoLineaVenta}"/>
+                                        <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}"/>
+                                        <DataGridTextColumn Header="Código Producto" Binding="{Binding Producto.CodigoProducto}"/>
+                                        <DataGridTextColumn Header="Nombre Producto" Binding="{Binding Producto.nombre}"/>
+                                        <DataGridTextColumn Header="Precio" Binding="{Binding Producto.precio}"/>
+                                        <DataGridTemplateColumn>
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button x:Name="btnDeleteFila" Content="X" Click="btnDeleteFila_Click"/>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </GroupBox>
+                            <GroupBox Header="Categorías producto" DockPanel.Dock="Left" Margin="0,0,8,0" Style="{DynamicResource MaterialDesignGroupBox}" materialDesign:ColorZoneAssist.Mode="Accent">
+                                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                    <StackPanel Name="unfgCategoriasProducto" MinWidth="140" Orientation="Vertical"></StackPanel>
+                                </ScrollViewer>
+                            </GroupBox>
+                            <GroupBox Header="Productos" Style="{DynamicResource MaterialDesignGroupBox}" Margin="8,0,0,0" materialDesign:ColorZoneAssist.Mode="Accent">
+                                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                    <WrapPanel Name="unfgProductos" Orientation="Horizontal"></WrapPanel>
+                                </ScrollViewer>
+                            </GroupBox>
+                        </DockPanel>
+                        
+                    </DockPanel>
+                </TabItem>
+            </dragablz:TabablzControl>
+        </DockPanel>
+    </Grid>
+</Window>

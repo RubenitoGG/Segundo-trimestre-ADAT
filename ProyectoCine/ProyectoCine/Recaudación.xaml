@@ -1,0 +1,23 @@
+﻿<Window x:Class="ProyectoCine.Recaudación"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoCine"
+        mc:Ignorable="d"
+        Title="Cine Aurea" Height="300" MinHeight="300" Width="400" MinWidth="400" WindowStartupLocation="CenterScreen"        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto" Icon="imagenes/inicio/cineauracolor.png">
+    <GroupBox Header="Recaudación" Style="{DynamicResource MaterialDesignGroupBox}" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+        <UniformGrid Columns="2" Rows="2">
+            <Label Content="Total entradas vendidas:" VerticalAlignment="Center"/>
+            <Label Name="lblTotalEntradasVendidas" VerticalAlignment="Center"/>
+            <Label Content="Total recaudación:" VerticalAlignment="Center"/>
+            <Label Name="lblTotalRecaudación" VerticalAlignment="Center"/>
+        </UniformGrid>
+    </GroupBox>
+</Window>

@@ -1,0 +1,44 @@
+﻿<Window x:Class="ProyectoCine.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoCine"
+        mc:Ignorable="d"
+        Title="Cine Aurea" Height="600" Width="450" MaxHeight="600" MinHeight="600" MinWidth="450" MaxWidth="450"
+        WindowStartupLocation="CenterScreen"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto" Icon="imagenes/inicio/cineauracolor.png">
+    <Grid Name="gridInicio" Background="#336699" IsEnabled="True" Visibility="Visible">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+        </Grid.ColumnDefinitions>
+        <Image Source="/imagenes/inicio/cineaurea.png" Grid.Column="1" Margin="16"/>
+        <GroupBox Header="Inicio de sesión" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="1" Grid.Column="1" Margin="16" materialDesign:ColorZoneAssist.Mode="Accent" Background="#C5CAE9">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="1" materialDesign:HintAssist.Hint="Usuario" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Name="txtUsuarioEnSesion" VerticalAlignment="Center" Margin="10,0,10,0" Text="" FontSize="16"/>
+                <PasswordBox Grid.Row="1" Grid.Column="1" materialDesign:HintAssist.Hint="Contraseña" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Name="pwdPassEnSesion" VerticalAlignment="Center" Margin="10,0,10,0" Password="" FontSize="16"/>
+                <WrapPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
+                    <Button Name="lbEntrar" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Entrar" Click="lbEntrar_MouseDown" Margin="5" FontSize="16" FontStyle="Italic"/>
+                    <Button Name="lbSalir" Style="{DynamicResource MaterialDesignRaisedButton}" materialDesign:ShadowAssist.ShadowDepth="Depth3" Content="Salir" Margin="5" Click="lbSalir_MouseDown" FontSize="16" FontStyle="Italic"/>
+                </WrapPanel>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>

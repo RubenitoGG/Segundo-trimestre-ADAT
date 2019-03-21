@@ -1,0 +1,207 @@
+﻿<Window x:Class="ProyectoCine.Listas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoCine"
+        mc:Ignorable="d"
+        Title="Cine Aurea" Height="700" MinHeight="700" Width="550" MinWidth="550" WindowStartupLocation="CenterScreen"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto" Icon="imagenes/inicio/cineauracolor.png">
+    <DockPanel LastChildFill="True">
+        <Grid DockPanel.Dock="Bottom">
+        <Grid Name="grListaEmpleados" IsEnabled="False" Visibility="Hidden">
+                <GroupBox Header="Lista de empleados" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="0" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                    <DataGrid Name="dtgrEmpleados" CanUserAddRows="False"  AutoGenerateColumns="False"
+                                        ScrollViewer.CanContentScroll="True" 
+                                        ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Cod.Empleado" Binding="{Binding CodigoEmpleado}"/>
+                            <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"/>
+                            <DataGridTextColumn Header="Apellidos" Binding="{Binding apellidos}"/>
+                            <DataGridTextColumn Header="NIF" Binding="{Binding nif}"/>
+                            <DataGridTextColumn Header="Teléfono" Binding="{Binding telefono}"/>
+                            <DataGridTextColumn Header="Email" Binding="{Binding correo}"/>
+                            <DataGridTextColumn Header="Dirección" Binding="{Binding direccion}"/>
+                            <DataGridTextColumn Header="Rango" Binding="{Binding rango}"/>
+                            <DataGridTextColumn Header="Usuario" Binding="{Binding usuario}"/>
+                            <DataGridTextColumn Header="Contraseña" Binding="{Binding contrasena}"/>
+                            <DataGridTextColumn Header="F.Alta" Binding="{Binding fechaAlta}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </GroupBox>
+            </Grid>
+            <Grid Name="grListaCliente"  IsEnabled="False" Visibility="Hidden">
+                <GroupBox Header="Lista de clientes" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="0" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                    <DataGrid Name="dtgrClientes" CanUserAddRows="False"  AutoGenerateColumns="False"
+                                        ScrollViewer.CanContentScroll="True" 
+                                        ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Id.Cliente" Binding="{Binding ClienteId}"/>
+                            <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"/>
+                            <DataGridTextColumn Header="Apellidos" Binding="{Binding apellidos}"/>
+                            <DataGridTextColumn Header="Nif" Binding="{Binding nif}"/>
+                            <DataGridTextColumn Header="Teléfono" Binding="{Binding telefono}"/>
+                            <DataGridTextColumn Header="Correo" Binding="{Binding correo}"/>
+                            <DataGridTextColumn Header="Dirección" Binding="{Binding direccion}"/>
+                            <DataGridTextColumn Header="Tipo" Binding="{Binding tipo}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </GroupBox>
+            </Grid>
+            <Grid Name="grListaFunciones"  IsEnabled="False" Visibility="Hidden">
+                <GroupBox Header="Lista de funciones" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="0" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                    <DataGrid Name="dtgrFunciones" CanUserAddRows="False"  AutoGenerateColumns="False"
+                                        ScrollViewer.CanContentScroll="True" 
+                                        ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Cod.Funcion" Binding="{Binding CodigoFuncion}"/>
+                            <DataGridTextColumn Header="Formato" Binding="{Binding formato}"/>
+                            <DataGridTextColumn Header="Cod.Sala" Binding="{Binding CodigoSala}"/>
+                            <DataGridTextColumn Header="Cod.Película" Binding="{Binding CodigoPelicula}"/>
+                            <DataGridTextColumn Header="F.Inicio" Binding="{Binding fechaInicio}"/>
+                            <DataGridTextColumn Header="F.Fin" Binding="{Binding fechaFin}"/>
+                            <DataGridCheckBoxColumn Header="Estado" Binding="{Binding activo}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </GroupBox>
+            </Grid>
+            <Grid Name="grListaSalas" IsEnabled="False" Visibility="Hidden">
+                <GroupBox Header="Lista de salas" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="0" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                    <DataGrid Name="dtgrSalas" CanUserAddRows="False"  AutoGenerateColumns="False"
+                                        ScrollViewer.CanContentScroll="True" 
+                                        ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Cod.Sala" Binding="{Binding CodigoSala}"/>
+                            <DataGridTextColumn Header="Número" Binding="{Binding numero}"/>
+                            <DataGridTextColumn Header="Filas" Binding="{Binding numFilas}"/>
+                            <DataGridTextColumn Header="Columnas" Binding="{Binding numColumnas}"/>
+                            <DataGridTextColumn Header="Formato" Binding="{Binding formato}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </GroupBox>
+            </Grid>
+            <Grid Name="grListaHorarios" IsEnabled="False" Visibility="Hidden">
+                <GroupBox Header="Lista de horarios" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="0" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                    <DataGrid Name="dtgrHorarios" CanUserAddRows="False"  AutoGenerateColumns="False"
+                                        ScrollViewer.CanContentScroll="True" 
+                                        ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Día" Binding="{Binding DiaSemana}"/>
+                            <DataGridTextColumn Header="Cod.Función" Binding="{Binding CodigoFuncion}"/>
+                            <DataGridTextColumn Header="H.inicio" Binding="{Binding horaInicio}"/>
+                            <DataGridTextColumn Header="H.fin" Binding="{Binding horaFin}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </GroupBox>
+            </Grid>
+            <Grid Name="grListaPeliculas" IsEnabled="False" Visibility="Hidden">
+                <GroupBox Header="Lista de peliculas" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="0" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                    <DataGrid Name="dtgrPeliculas" CanUserAddRows="False"  AutoGenerateColumns="False"
+                                        ScrollViewer.CanContentScroll="True" 
+                                        ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Cod.Pelicula" Binding="{Binding CodigoPelicula}"/>
+                            <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"/>
+                            <DataGridTextColumn Header="Duracion" Binding="{Binding duracion}"/>
+                            <DataGridTextColumn Header="Estreno" Binding="{Binding fechaEstreno}"/>
+                            <DataGridTextColumn Header="Cod.Productora" Binding="{Binding CodigoProductora}"/>
+                            <DataGridTextColumn Header="Cod.Pelicula" Binding="{Binding CodigoPelicula}"/>
+                            <DataGridCheckBoxColumn Header="Cartelera" Binding="{Binding enCartelera}"/>
+                            <DataGridTextColumn Header="Descripcion" Binding="{Binding descripcion}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </GroupBox>
+            </Grid>
+            <Grid Name="grListaProductoras" IsEnabled="False" Visibility="Hidden">
+                <GroupBox Header="Lista de productoras" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="0" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                    <DataGrid Name="dtgrProductoras" CanUserAddRows="False"  AutoGenerateColumns="False"
+                                        ScrollViewer.CanContentScroll="True" 
+                                        ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Cod.Productora" Binding="{Binding CodigoProductora}"/>
+                            <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"/>
+                            <DataGridTextColumn Header="País" Binding="{Binding pais}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </GroupBox>
+            </Grid>
+            <Grid Name="grListaCategoriasPeliculas" IsEnabled="False" Visibility="Hidden">
+                <GroupBox Header="Lista de categorías de películas" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="0" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                    <DataGrid Name="dtgrCategorias" CanUserAddRows="False"  AutoGenerateColumns="False"
+                                        ScrollViewer.CanContentScroll="True" 
+                                        ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Cod.Categoría" Binding="{Binding CodigoCategoriaPelicula}"/>
+                            <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"/>
+                            <DataGridTextColumn Header="Descripcion" Binding="{Binding descripcion}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </GroupBox>
+            </Grid>
+            <Grid Name="grListaProveedores" IsEnabled="False" Visibility="Hidden">
+                <GroupBox Header="Lista de proveedores" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="0" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                    <DataGrid Name="dtgrProveedores" CanUserAddRows="False"  AutoGenerateColumns="False"
+                                        ScrollViewer.CanContentScroll="True" 
+                                        ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Cod.Proveedor" Binding="{Binding CodigoProveedor}"/>
+                            <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"/>
+                            <DataGridTextColumn Header="Apellidos" Binding="{Binding apellidos}"/>
+                            <DataGridTextColumn Header="NIF" Binding="{Binding nif}"/>
+                            <DataGridTextColumn Header="Dirección" Binding="{Binding direccion}"/>
+                            <DataGridTextColumn Header="Teléfono" Binding="{Binding telefono}"/>
+                            <DataGridTextColumn Header="Email" Binding="{Binding correo}"/>
+                            <DataGridTextColumn Header="P.Contacto" Binding="{Binding personaContacto}"/>
+                            <DataGridTextColumn Header="Tipo" Binding="{Binding tipo}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </GroupBox>
+            </Grid>
+            <Grid Name="grListaCategoriasProductos" IsEnabled="False" Visibility="Hidden">
+                <GroupBox Header="Lista de categorías de productos" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="0" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                    <DataGrid Name="dtgrCategoriasProductos" CanUserAddRows="False"  AutoGenerateColumns="False"
+                                        ScrollViewer.CanContentScroll="True" 
+                                        ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Cod.Categoría" Binding="{Binding CodigoCategoriaProducto}"/>
+                            <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"/>
+                            <DataGridTextColumn Header="Descripcion" Binding="{Binding descripcion}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </GroupBox>
+            </Grid>
+            <Grid Name="grListaProductos" IsEnabled="False" Visibility="Hidden">
+                <GroupBox Header="Lista de productos" Style="{DynamicResource MaterialDesignGroupBox}" Grid.Row="0" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="1">
+                    <DataGrid Name="dtgrProductos" CanUserAddRows="False"  AutoGenerateColumns="False"
+                                        ScrollViewer.CanContentScroll="True" 
+                                        ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Cod.Producto" Binding="{Binding CodigoProducto}"/>
+                            <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}"/>
+                            <DataGridTextColumn Header="Precio" Binding="{Binding precio}"/>
+                            <DataGridTextColumn Header="Stock" Binding="{Binding stock}"/>
+                            <DataGridTextColumn Header="Cod.Categoria" Binding="{Binding CodigoCategoriaProducto}"/>
+                            <DataGridTextColumn Header="Cod.Proveedor" Binding="{Binding CodigoProveedor}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </GroupBox>
+            </Grid>
+        </Grid>
+    </DockPanel>
+</Window>
